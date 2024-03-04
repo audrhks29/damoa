@@ -24,7 +24,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} inner`}>
+      <body
+        className={`${inter.className} inner dark:bg-dark-200 dark:text-[#eee]`}
+      >
         <Navigation />
         {children}
       </body>
