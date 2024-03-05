@@ -8,3 +8,10 @@ interface ProjectListType {
   repoLink: string;
   isLogin: string;
 }
+
+interface CertificateListType {
+  id: number;
+  acqDate: string;
+  type: string;
+  publisher: string;
+}

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config, } from "tailwindcss";
 
 const config: Config = {
   darkMode: 'selector',
@@ -22,6 +22,15 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities }: any) => {
+      addUtilities({
+        ".navigation_list": {
+          "@apply w-36 text-center cursor-pointer hover:bg-dark-300 hover:transition-all duration-500":
+            "",
+        },
+      })
+    }
+  ],
 };
 export default config;
