@@ -1,5 +1,11 @@
 import Link from "next/link";
-import DarkMode from "./DarkModeButton";
+
+import dynamic from "next/dynamic";
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("./DarkModeButton"), { ssr: false }
+)
+
 
 export default function Navigation() {
   return (
@@ -18,7 +24,7 @@ export default function Navigation() {
           <li className='w-36 text-center cursor-pointer dark:hover:bg-dark-300 dark:hover:transition-all duration-700'>
             <Link href="/project" className="w-full h-full block p-3">Project</Link>
           </li>
-          <li><DarkMode /></li>
+          <li><DynamicComponentWithNoSSR /></li>
         </ul>
       </nav>
     </header>

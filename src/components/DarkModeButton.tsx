@@ -3,19 +3,11 @@
 import { useEffect, useState } from "react";
 
 export default function DarkMode() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const localStorageChecker = (): boolean => {
-    if (isClient) {
-      const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (!localStorage.theme) return isDarkMode;
-      return localStorage.theme === 'dark';
-    }
-    return false;
+    if (!localStorage.theme) return isDarkMode;
+    return localStorage.theme === 'dark' ? true : false;
   };
 
   const [dark, setDark] = useState(localStorageChecker());
@@ -30,20 +22,19 @@ export default function DarkMode() {
   };
 
   useEffect(() => {
-    if (isClient) {
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-    }
-  }, [dark, isClient]);
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  }, [dark]);
+
 
   return (
-    isClient && (
-      <button className="" onClick={darkSetButton}>
-        다크모드
-      </button>
-    )
-  );
+
+    <button className="" onClick={darkSetButton}>
+      다크모드
+    </button>
+  )
+
 }
