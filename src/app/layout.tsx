@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Navigation from "@/components/Navigation";
+import FetchData from "@/fetch/FetchData";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} inner bg-dark-200 text-[#eee]`}
       >
+        <FetchData />
         <Navigation />
         {children}
       </body>
