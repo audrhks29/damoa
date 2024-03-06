@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <header className="w-full">
+    <header className="w-full inner">
       <nav className="bg-slate-700">
         <ul className="w-full flex">
           <li className='navigation_list'>

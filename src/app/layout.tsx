@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} inner bg-dark-200 text-[#eee]`}
+        className={`${inter.className} bg-dark-200 text-[#eee]`}
       >
         <FetchData />
         <Navigation />

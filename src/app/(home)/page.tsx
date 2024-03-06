@@ -1,13 +1,15 @@
-import AboutMe from "@/components/section/AboutMe/AboutMe";
+import AboutMe from "@/components/section/aboutMe/AboutMe";
+import Main from "@/components/section/main/Main";
+import Project from "@/components/section/project/Project";
 import Skill from "@/components/section/skill/Skill";
 
 export default function Home() {
   return (
     <main className="">
-      <h2>MyungKwan&apos;s Portfolio</h2>
+      <Main />
       <AboutMe />
       <Skill />
-
+      <Project />
     </main>
   );
 }
