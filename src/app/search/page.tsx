@@ -1,17 +1,31 @@
+"use client"
+
 import useSearchResultDataStore from "@/store/searchResult-store"
+import SearchBox from "../components/search/SearchBox"
 
 export default function SearchResult() {
   const { searchResults } = useSearchResultDataStore()
-
+  console.log(searchResults);
   return (
-    <div>
+    <main className="inner">
+      <SearchBox
+        styleProp={{ marginRight: 'auto' }} />
+
       <ul>
-        {searchResults.map((result: SearchResultType) => (
-          <li key={result.url}>
-            <a href={result.url}>{result.title}</a>
-          </li>
-        ))}
+        {searchResults.map((result: SearchResultType) => {
+          const url = result.url.split('/')
+
+          return (
+            <li key={result.url} className='py-4 px-3 mb-3 rounded-2xl w-[800px] border shadow'>
+              <a href={result.url} target='_blank'>
+                <p className='text-xs mb-3'>{`${url[0]}//${url[2]}`}</p>
+                <p className='mb-2' dangerouslySetInnerHTML={{ __html: result.title }}></p>
+                <p className='text-sm' dangerouslySetInnerHTML={{ __html: result.contents }}></p>
+              </a>
+            </li>
+          )
+        })}
       </ul>
-    </div>
+    </main>
   )
 }
