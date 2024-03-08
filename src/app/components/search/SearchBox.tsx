@@ -2,37 +2,58 @@
 
 import React, { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import useSearchResultDataStore from '@/store/searchResult-store';
+import useSearchResultDataStore from '@/store/searchType-store';
+import useSearchAllStore from '@/store/searchAll-store';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function SearchBox(props) {
-  const router = useRouter()
-  const params = useSearchParams()
+export default function SearchBox(
+  props: { styleProp: React.CSSProperties | undefined }
+) {
+  const router = useRouter();
+  const params = useSearchParams();
 
-  const { fetchSearchResultData } = useSearchResultDataStore()
+  const { fetchSearchTypeData } = useSearchResultDataStore();
+  const { fetchSearchData } = useSearchAllStore();
 
-  const queryParams = params.get('query')
-  const pageParams = params.get('page')
+  const typeParams = params.get('type');
+  const queryParams = params.get('query');
+  const pageParams = params.get('page');
 
   const [query, setQuery] = useState(queryParams);
 
   useEffect(() => {
-    if (queryParams) handleUrl(queryParams)
-  }, [queryParams, pageParams])
+    if (queryParams) handleUrl(queryParams);
+  }, [queryParams, pageParams, typeParams])
 
+  // fix url
   const handleUrl = (query: string) => {
-    const page = pageParams
-    fetchSearchResultData(query, page);
-    router.push(`/search?query=${query}&page=${page}`)
+    const page = Number(pageParams);
+    if (typeParams === "all" || !typeParams) {
+      fetchSearchData(query, page);
+    }
+    if (page) fetchSearchTypeData(query, page);
+    if (typeParams) router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
   }
 
+  // search button click
   const handleSearch = (query: string) => {
     const page = 1;
-    fetchSearchResultData(query, page);
-    router.push(`/search?query=${query}&page=${page}`)
+    if (typeParams === "all" || !typeParams) {
+      fetchSearchData(query, page);
+      router.push(`/search?type=all&query=${query}&page=${page}`);
+    } else {
+      fetchSearchTypeData(query, page);
+      router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
+    }
   };
 
-  const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+  // input change
+  const handleChange = (
+    event: {
+      target: {
+        value: React.SetStateAction<string>;
+      }
+    }) => {
     setQuery(event.target.value);
   };
 

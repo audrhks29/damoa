@@ -1,36 +1,28 @@
 "use client"
 
-import useSearchResultDataStore from "@/store/searchResult-store"
+import useSearchTypeStore from "@/store/searchType-store"
 
 import SearchBox from "../components/search/SearchBox"
 import Paging from "../components/search/Paging"
+import SearchWeb from "../components/search/web/SearchWeb"
+import { useSearchParams } from "next/navigation"
+import SearchAll from "../components/search/all/SearchAll"
+
 
 export default function SearchResult() {
-  const { searchResults } = useSearchResultDataStore()
-  // const params = useSearchParams()
+  const { searchTypeResults } = useSearchTypeStore()
+  const params = useSearchParams()
 
-  // const limitParam = params.get('new');
-  // console.log(limitParam);
+  const typeParam = params.get('type');
+
   return (
     <main className="inner">
       <SearchBox
         styleProp={{ marginRight: 'auto' }} />
 
-      <ul className="w-[800px]">
-        {searchResults.map((result: SearchResultType) => {
-          const url = result.url.split('/')
+      {typeParam === "all" && <SearchAll />}
+      {typeParam === "web" && <SearchWeb searchTypeResults={searchTypeResults} />}
 
-          return (
-            <li key={result.url} className='py-4 px-3 mb-3 rounded-2xl border shadow'>
-              <a href={result.url} target='_blank'>
-                <p className='text-xs mb-3'>{`${url[0]}//${url[2]}`}</p>
-                <p className='mb-2' dangerouslySetInnerHTML={{ __html: result.title }}></p>
-                <p className='text-sm' dangerouslySetInnerHTML={{ __html: result.contents }}></p>
-              </a>
-            </li>
-          )
-        })}
-      </ul>
       <Paging />
     </main>
   )

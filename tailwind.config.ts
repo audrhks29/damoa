@@ -15,6 +15,15 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities }: { addUtilities: any }) => {
+      addUtilities({
+        ".pagingArrow": {
+          "@apply w-9 h-9 cursor-pointer text-[20px] flex justify-center items-center border rounded-full hover:text-orange-600 hover:border-orange-600":
+            "",
+        },
+      })
+    }
+  ],
 };
 export default config;
