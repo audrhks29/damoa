@@ -16,12 +16,12 @@ export default function SearchResult() {
       <SearchBox
         styleProp={{ marginRight: 'auto' }} />
 
-      <ul>
+      <ul className="w-[800px]">
         {searchResults.map((result: SearchResultType) => {
           const url = result.url.split('/')
 
           return (
-            <li key={result.url} className='py-4 px-3 mb-3 rounded-2xl w-[800px] border shadow'>
+            <li key={result.url} className='py-4 px-3 mb-3 rounded-2xl border shadow'>
               <a href={result.url} target='_blank'>
                 <p className='text-xs mb-3'>{`${url[0]}//${url[2]}`}</p>
                 <p className='mb-2' dangerouslySetInnerHTML={{ __html: result.title }}></p>

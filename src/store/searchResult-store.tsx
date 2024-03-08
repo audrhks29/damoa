@@ -3,13 +3,14 @@ import axios from 'axios';
 
 interface SearchResultStoreType {
   searchResults: SearchResultType[];
-  fetchSearchResultData: (API_KEY: string, query: string) => Promise<void>;
+  fetchSearchResultData: (query: string, page: number) => void;
 }
 
 const useSearchResultDataStore = create<SearchResultStoreType>(set => ({
   searchResults: [],
 
-  fetchSearchResultData: async (API_KEY, query) => {
+  fetchSearchResultData: async (query, page) => {
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY
     const Kakao = axios.create({
       baseURL: 'https://dapi.kakao.com/v2',
       headers: {
@@ -18,13 +19,13 @@ const useSearchResultDataStore = create<SearchResultStoreType>(set => ({
     });
 
     try {
-      const response = await Kakao.get(`search/web?query=${query}&size=10&page=2`);
+      const response = await Kakao.get(`search/web?query=${query}&size=10&page=${page}`);
 
       set({ searchResults: response.data.documents });
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
-  }
+  },
 }));
 
 

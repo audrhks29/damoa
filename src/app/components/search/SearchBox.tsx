@@ -1,25 +1,35 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import useSearchResultDataStore from '@/store/searchResult-store';
-import { useRouter } from 'next/navigation';
-
-
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function SearchBox(props) {
   const router = useRouter()
+  const params = useSearchParams()
+
   const { fetchSearchResultData } = useSearchResultDataStore()
 
-  // const params = useSearchParams()
-  // const queryParams = params.get('query');
+  const queryParams = params.get('query')
+  const pageParams = params.get('page')
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(queryParams);
 
-  const handleSearch = (API_KEY: string, query: string) => {
-    fetchSearchResultData(API_KEY, query);
-    router.push(`/search?query=${query}`)
+  useEffect(() => {
+    if (queryParams) handleUrl(queryParams)
+  }, [queryParams, pageParams])
+
+  const handleUrl = (query: string) => {
+    const page = pageParams
+    fetchSearchResultData(query, page);
+    router.push(`/search?query=${query}&page=${page}`)
+  }
+
+  const handleSearch = (query: string) => {
+    const page = 1;
+    fetchSearchResultData(query, page);
+    router.push(`/search?query=${query}&page=${page}`)
   };
 
   const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -38,9 +48,10 @@ export default function SearchBox(props) {
         className='w-[500px] h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
       />
       <button
-        onClick={() => handleSearch(API_KEY, query)}
+        onClick={() => handleSearch(query)}
         className='w-[70px] h-[50px] absolute top-0 right-0 flex items-center justify-center'>
-        <i className='text-[30px] text-orange-600'><AiOutlineSearch /></i></button>
+        <i className='text-[30px] text-orange-600'><AiOutlineSearch /></i>
+      </button>
     </div>
   );
 }
