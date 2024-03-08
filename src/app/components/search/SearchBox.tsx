@@ -51,7 +51,7 @@ export default function SearchBox(
   const handleChange = (
     event: {
       target: {
-        value: React.SetStateAction<string>;
+        value: React.SetStateAction<string | null>;
       }
     }) => {
     setQuery(event.target.value);
