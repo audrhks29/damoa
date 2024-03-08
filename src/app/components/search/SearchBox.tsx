@@ -5,17 +5,21 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import useSearchResultDataStore from '@/store/searchResult-store';
 import { useRouter } from 'next/navigation';
 
+
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
 export default function SearchBox(props) {
   const router = useRouter()
   const { fetchSearchResultData } = useSearchResultDataStore()
 
+  // const params = useSearchParams()
+  // const queryParams = params.get('query');
+
   const [query, setQuery] = useState('');
 
   const handleSearch = (API_KEY: string, query: string) => {
     fetchSearchResultData(API_KEY, query);
-    router.push('/search')
+    router.push(`/search?query=${query}`)
   };
 
   const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {

@@ -8,6 +8,7 @@ interface SearchResultStoreType {
 
 const useSearchResultDataStore = create<SearchResultStoreType>(set => ({
   searchResults: [],
+
   fetchSearchResultData: async (API_KEY, query) => {
     const Kakao = axios.create({
       baseURL: 'https://dapi.kakao.com/v2',
@@ -15,8 +16,10 @@ const useSearchResultDataStore = create<SearchResultStoreType>(set => ({
         Authorization: `KakaoAK ${API_KEY}`,
       },
     });
+
     try {
-      const response = await Kakao.get(`search/web?query=${query}&size=50`);
+      const response = await Kakao.get(`search/web?query=${query}&size=10&page=2`);
+
       set({ searchResults: response.data.documents });
     } catch (error) {
       console.error('Error fetching search results:', error);

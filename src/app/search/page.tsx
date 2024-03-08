@@ -1,11 +1,16 @@
 "use client"
 
 import useSearchResultDataStore from "@/store/searchResult-store"
+
 import SearchBox from "../components/search/SearchBox"
+import Paging from "../components/search/Paging"
 
 export default function SearchResult() {
   const { searchResults } = useSearchResultDataStore()
-  console.log(searchResults);
+  // const params = useSearchParams()
+
+  // const limitParam = params.get('new');
+  // console.log(limitParam);
   return (
     <main className="inner">
       <SearchBox
@@ -26,6 +31,7 @@ export default function SearchResult() {
           )
         })}
       </ul>
+      <Paging />
     </main>
   )
 }
