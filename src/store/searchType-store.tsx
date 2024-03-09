@@ -38,7 +38,7 @@ const useSearchTypeStore = create<SearchTypeStoreType>(set => ({
 
     try {
       if (type === "book") {
-        const response = await KakaoBook.get(`search/${type}?query=${query}&size=10&page=${page}`);
+        const response = await KakaoBook.get(`search/book?query=${query}&size=10&page=${page}`);
         set({ searchBookResults: response.data.documents })
       }
       else {

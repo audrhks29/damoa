@@ -22,18 +22,20 @@ export default function SearchBox(
   const [query, setQuery] = useState<string>(queryParams ? queryParams : "");
 
   useEffect(() => {
+    const handleUrl = (query: string) => {
+      const page = Number(pageParams);
+      if (typeParams === "all" || !typeParams) {
+        fetchSearchData(query, page);
+      }
+      if (page && typeParams) fetchSearchTypeData(typeParams, query, page);
+      if (typeParams) router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
+    }
+
     if (queryParams) handleUrl(queryParams);
-  }, [queryParams, pageParams, typeParams])
+  }, [queryParams, pageParams, typeParams, fetchSearchTypeData, router, fetchSearchData])
 
   // fix url
-  const handleUrl = (query: string) => {
-    const page = Number(pageParams);
-    if (typeParams === "all" || !typeParams) {
-      fetchSearchData(query, page);
-    }
-    if (page && typeParams) fetchSearchTypeData(typeParams, query, page);
-    if (typeParams) router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
-  }
+
 
   // search button click
   const handleSearch = (query: string) => {

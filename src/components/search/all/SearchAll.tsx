@@ -15,7 +15,6 @@ export default function SearchAll() {
     searchBookResults,
     searchCafeResults
   } = useSearchAllStore();
-  // console.log(searchWebResults);
   return (
     <div className="w-[800px]">
       {searchWebResults.length > 0 && <section>

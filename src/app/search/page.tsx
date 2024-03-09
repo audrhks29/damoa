@@ -14,6 +14,7 @@ import SearchBlog from "@/components/search/blog/SearchBlog"
 import SearchBook from "@/components/search/book/SearchBook"
 import SearchCafe from "@/components/search/cafe/SearchCafe"
 
+
 export default function SearchResult() {
   const {
     searchWebResults,
@@ -22,18 +23,20 @@ export default function SearchResult() {
     searchBlogResults,
     searchBookResults,
     searchCafeResults,
-
   } = useSearchTypeStore()
 
   const params = useSearchParams()
-  // console.log(searchTypeResults);
+
   const typeParam = params.get('type');
 
   return (
+
     <main className="inner">
       <SearchBox
         styleProp={{ marginRight: 'auto' }} />
+
       <TypeSection />
+
       {typeParam === "all" && <SearchAll />}
       {typeParam === "web" && <SearchWeb searchTypeResults={searchWebResults} />}
       {typeParam === "vclip" && <SearchVclip searchTypeResults={searchVclipResults} />}
@@ -44,5 +47,6 @@ export default function SearchResult() {
 
       <Paging />
     </main>
+
   )
 }

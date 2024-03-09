@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function SearchVclip(props: { searchTypeResults: SearchVclipType[] }) {
   return (
     <ul className="w-[800px] ">
-      {props.searchTypeResults.map((result: SearchVclipType, index: number) => {
+      {props.searchTypeResults && props.searchTypeResults.map((result: SearchVclipType, index: number) => {
         const url = result.url.split('/')
 
         return (

@@ -9,13 +9,13 @@ export default function Paging() {
   const params = useSearchParams();
   const pathName = usePathname();
 
-  const pagingArray = Array.from({ length: 50 }, (_, i) => i + 1);
-
   const typeParams = params.get('type');
   const queryParams = params.get('query');
   const pageParams = params.get('page');
 
-  const pagingLength = 10; // 페이지 그룹 길이
+  const pagingLength = 10; // pageGroupLength
+
+  const pagingArray = Array.from({ length: 50 }, (_, i) => i + 1);
 
   const routerBaseUrl = `${pathName}?type=${typeParams}&query=${queryParams}&`
 

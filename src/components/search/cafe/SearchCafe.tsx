@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function SearchCafe(props: { searchTypeResults: SearchCafeType[] }) {
   return (
     <ul className="w-[800px]">
-      {props.searchTypeResults.map((result: SearchCafeType, index: number) => {
+      {props.searchTypeResults && props.searchTypeResults.map((result: SearchCafeType, index: number) => {
         const date = new Date(result.datetime);
         const formattedDate = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " + date.getDate() + "일";
 

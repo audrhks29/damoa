@@ -5,7 +5,7 @@ export default function SearchBlog(props: { searchTypeResults: SearchBlogType[] 
 
   return (
     <ul className="w-[800px]">
-      {props.searchTypeResults.map((result: SearchBlogType, index: number) => {
+      {props.searchTypeResults && props.searchTypeResults.map((result: SearchBlogType, index: number) => {
         const date = new Date(result.datetime);
         const formattedDate = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " + date.getDate() + "일";
 
