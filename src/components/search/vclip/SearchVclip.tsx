@@ -6,7 +6,7 @@ export default function SearchVclip(props: { searchTypeResults: SearchVclipType[
     <ul className="w-[800px] ">
       {props.searchTypeResults.map((result: SearchVclipType, index: number) => {
         const url = result.url.split('/')
-        // const
+
         return (
           <li
             key={index}

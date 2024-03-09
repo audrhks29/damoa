@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "type": "all",
+    "name": "전체"
+  },
+  {
+    "id": 2,
+    "type": "web",
+    "name": "웹문서"
+  },
+  {
+    "id": 3,
+    "type": "vclip",
+    "name": "동영상"
+  },
+  {
+    "id": 4,
+    "type": "image",
+    "name": "이미지"
+  },
+  {
+    "id": 5,
+    "type": "blog",
+    "name": "블로그"
+  },
+  {
+    "id": 6,
+    "type": "book",
+    "name": "도서"
+  },
+  {
+    "id": 7,
+    "type": "cafe",
+    "name": "카페"
+  }
+]

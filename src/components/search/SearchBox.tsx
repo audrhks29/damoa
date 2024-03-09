@@ -19,7 +19,7 @@ export default function SearchBox(
   const queryParams = params.get('query');
   const pageParams = params.get('page');
 
-  const [query, setQuery] = useState(queryParams);
+  const [query, setQuery] = useState<string>(queryParams ? queryParams : "");
 
   useEffect(() => {
     if (queryParams) handleUrl(queryParams);
@@ -31,7 +31,7 @@ export default function SearchBox(
     if (typeParams === "all" || !typeParams) {
       fetchSearchData(query, page);
     }
-    if (page) fetchSearchTypeData(query, page);
+    if (page && typeParams) fetchSearchTypeData(typeParams, query, page);
     if (typeParams) router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
   }
 
@@ -42,7 +42,7 @@ export default function SearchBox(
       fetchSearchData(query, page);
       router.push(`/search?type=all&query=${query}&page=${page}`);
     } else {
-      fetchSearchTypeData(query, page);
+      fetchSearchTypeData(typeParams, query, page);
       router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
     }
   };
@@ -51,14 +51,14 @@ export default function SearchBox(
   const handleChange = (
     event: {
       target: {
-        value: React.SetStateAction<string | null>;
+        value: React.SetStateAction<string>;
       }
     }) => {
     setQuery(event.target.value);
   };
 
   return (
-    <div className='relative w-[500px] my-6'
+    <div className='relative w-[500px] mt-6'
       style={props.styleProp}
     >
       <input

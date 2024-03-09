@@ -15,44 +15,39 @@ export default function SearchAll() {
     searchBookResults,
     searchCafeResults
   } = useSearchAllStore();
-
-  // console.log(searchImageResults);
-  console.log(searchBlogResults);
-  // console.log(searchBookResults);
-  // console.log(searchCafeResults);
-
+  // console.log(searchWebResults);
   return (
     <div className="w-[800px]">
-      <section>
+      {searchWebResults.length > 0 && <section>
         <h2>웹문서</h2>
         <SearchWeb searchTypeResults={searchWebResults} />
-      </section>
+      </section>}
 
-      <section>
+      {searchVclipResults.length > 0 && <section>
         <h2>동영상</h2>
         <SearchVclip searchTypeResults={searchVclipResults} />
-      </section>
+      </section>}
 
-      <section>
+      {searchImageResults.length > 0 && <section>
         <h2>이미지</h2>
         <SearchImage searchTypeResults={searchImageResults} />
-      </section>
+      </section>}
 
-      <section>
+      {searchBlogResults.length > 0 && <section>
         <h2>블로그</h2>
         <SearchBlog searchTypeResults={searchBlogResults} />
-      </section>
+      </section>}
 
-      <section>
+      {searchBookResults.length > 0 && <section>
         <h2>도서</h2>
         <SearchBook searchTypeResults={searchBookResults} />
-      </section>
+      </section>}
 
-      <section>
+      {searchCafeResults.length > 0 && <section>
         <h2>카페</h2>
         <SearchCafe searchTypeResults={searchCafeResults} />
-      </section>
+      </section>}
 
-    </div>
+    </div >
   )
 }

@@ -11,16 +11,19 @@ export default function Paging() {
 
   const pagingArray = Array.from({ length: 50 }, (_, i) => i + 1);
 
+  const typeParams = params.get('type');
   const queryParams = params.get('query');
   const pageParams = params.get('page');
 
   const pagingLength = 10; // 페이지 그룹 길이
 
+  const routerBaseUrl = `${pathName}?type=${typeParams}&query=${queryParams}&`
+
   const [pagingGroup, setPagingGroup]
     = useState<number>(Math.floor(Number(pageParams) / pagingLength))
 
   const clickPagingList = (pageNumber: number) => {
-    router.push(`${pathName}?query=${queryParams}&page=${pageNumber}`);
+    router.push(`${routerBaseUrl}page=${pageNumber}`);
   }
 
   const pagingList = pagingArray.slice(pagingGroup * pagingLength, pagingGroup * pagingLength + pagingLength)
@@ -31,7 +34,7 @@ export default function Paging() {
   const changePagingGroup = (number: number) => {
     const value = pagingGroup + number
     setPagingGroup(value)
-    router.push(`${pathName}?query=${queryParams}&page=${value * 10 + 1}`);
+    router.push(`${routerBaseUrl}page=${value * 10 + 1}`);
   }
 
   return (

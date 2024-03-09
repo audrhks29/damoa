@@ -11,7 +11,7 @@ interface SearchAllStoreType {
 
   fetchSearchData: (query: string, page: number) => void;
 }
-// web,vclip,image,blog,book,cafe
+
 const useSearchAllStore = create<SearchAllStoreType>(set => ({
   searchWebResults: [],
   searchVclipResults: [],
