@@ -1,4 +1,6 @@
-import SearchBox from "@/components/search/SearchBox";
+import dynamic from 'next/dynamic';
+
+const SearchBox = dynamic(() => import('@/components/search/SearchBox'), { ssr: false })
 
 export default function Home() {
   return (
