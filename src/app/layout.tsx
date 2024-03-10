@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import { Suspense } from "react";
-import Loading from "@/components/loading";
+import { Inter } from "next/font/google";
+
 import Providers from './../components/provider/Providers';
+
+import "./globals.css";
+import Loading from "./search/loading";
 
 const inter = Inter({ subsets: ["latin"] });
 

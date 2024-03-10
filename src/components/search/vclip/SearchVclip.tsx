@@ -15,12 +15,12 @@ export default function SearchVclip(props: { searchTypeResults: SearchVclipType[
               <p className='text-xs mb-3'>{`${url[0]}//${url[2]}`}</p>
 
               <div className="flex">
-                <Image
+                {result.thumbnail !== "" && <Image
                   src={result.thumbnail}
                   width={138}
                   height={78}
                   alt={result.title}
-                  quality={100} />
+                  quality={100} />}
 
                 <div className="w-[600px] ml-4 whitespace-nowrap flex flex-col justify-between">
                   <p

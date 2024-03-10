@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function SearchBook(props: { searchTypeResults: SearchBookType[] }) {
   return (
     <ul className="w-[800px]">
-      {props.searchTypeResults&&props.searchTypeResults.map((result: SearchBookType, index: number) => {
+      {props.searchTypeResults && props.searchTypeResults.map((result: SearchBookType, index: number) => {
         const date = new Date(result.datetime);
         const formattedDate = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " + date.getDate() + "일";
 
@@ -12,13 +12,16 @@ export default function SearchBook(props: { searchTypeResults: SearchBookType[] 
           <li key={index} className='py-4 px-3 mb-3 rounded-2xl border shadow'>
             <Link href={result.url} target='_blank'>
               <div className="flex">
-                <Image
+
+                {result.thumbnail !== "" && <Image
                   src={result.thumbnail}
-                  width={90}
-                  height={100}
+                  height={120}
+                  width={100}
                   alt=""
                   quality={100}
-                />
+                  className="w-auto h-auto"
+                  priority={true}
+                />}
 
                 <div className='text-sm flex flex-col justify-between ml-4'>
                   <p className='mb-2 text-base hover:underline text-orange-600'>{result.title}</p>

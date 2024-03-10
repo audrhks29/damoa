@@ -10,13 +10,13 @@ export default function SearchImage(props: { searchTypeResults: SearchImageType[
           <li key={index}>
             <div className='overflow-hidden rounded-3xl w-[180px] cursor-pointer'>
               <Link href={result.doc_url} target="_blank">
-                <Image
+                {result.thumbnail_url !== "" && <Image
                   className='hover:scale-105 transition-all'
                   src={result.thumbnail_url}
                   width={180}
                   height={180}
                   alt=""
-                  quality={100} />
+                  quality={100} />}
               </Link>
             </div>
           </li>
