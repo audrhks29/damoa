@@ -27,7 +27,7 @@ export default function SearchBox(
       if (typeParams === "all" || !typeParams) {
         fetchSearchData(query, page);
       }
-      if (page && typeParams) fetchSearchTypeData(typeParams, query, page);
+      if (page && typeParams !== "all" && typeParams) fetchSearchTypeData(typeParams, query, page);
       if (typeParams) router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
     }
 
@@ -36,7 +36,7 @@ export default function SearchBox(
 
   // fix url
 
-
+  console.log(typeParams);
   // search button click
   const handleSearch = (query: string) => {
     const page = 1;

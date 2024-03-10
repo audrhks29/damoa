@@ -22,19 +22,21 @@
 
 ## 3. 개선해야할 사항
 ### 1. 문제해결
- 1. build시 useSearchParams() should be wrapped in a suspense boundary at page 에러 반환 
-    > 해결완료 [개발블로그 주소](https://frontendmk.tistory.com/10)
-  2. 배포 후 Minified React error #419 메세지 반환
-      > 해결완료 [개발블로그 주소](https://frontendmk.tistory.com/11)
-
+#### v1.0.0
+ 1. build시 useSearchParams() should be wrapped in a suspense boundary at page 에러 반환 문제 해결
+[개발블로그 주소](https://frontendmk.tistory.com/10)
+  1. 배포 후 Minified React error #419 메세지 반환 문제 해결
+ [개발블로그 주소](https://frontendmk.tistory.com/11)
+#### v1.0.1
+ 1. type==="all" 에서 url값 변경시 api요청주소 에러 문제 해결
+   
 ### 2. 기능개선
   1. 로고제작
   2. UI 개선
      1. 전체적인 UI개선 필요
      2. 이미지 로딩에 오랜 시간이 걸림
   3. 페이징
-     1. Type변경 시 pagingGroup이 변경되지 않는 문제
-     2. 검색결과에 따라 paging이 달라지도록 변경
+     1. 무한스크롤로 변경 예정
 
 
 </div>
