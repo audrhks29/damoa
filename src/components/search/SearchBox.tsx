@@ -22,6 +22,7 @@ export default function SearchBox(
   const [query, setQuery] = useState<string>(queryParams ? queryParams : "");
 
   useEffect(() => {
+    // fix url
     const handleUrl = (query: string) => {
       const page = Number(pageParams);
       if (typeParams === "all" || !typeParams) {
@@ -34,9 +35,8 @@ export default function SearchBox(
     if (queryParams) handleUrl(queryParams);
   }, [queryParams, pageParams, typeParams, fetchSearchTypeData, router, fetchSearchData])
 
-  // fix url
 
-  console.log(typeParams);
+
   // search button click
   const handleSearch = (query: string) => {
     const page = 1;
