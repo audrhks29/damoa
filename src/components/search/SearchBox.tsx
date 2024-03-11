@@ -5,6 +5,8 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import useSearchResultDataStore from '@/store/searchType-store';
 import useSearchAllStore from '@/store/searchAll-store';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SearchBox(
   props: { styleProp: React.CSSProperties | undefined }
@@ -35,8 +37,6 @@ export default function SearchBox(
     if (queryParams) handleUrl(queryParams);
   }, [queryParams, pageParams, typeParams, fetchSearchTypeData, router, fetchSearchData])
 
-
-
   // search button click
   const handleSearch = (query: string) => {
     const page = 1;
@@ -49,6 +49,9 @@ export default function SearchBox(
     }
   };
 
+  const handleEnterAtInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") handleSearch(query)
+  }
   // input change
   const handleChange = (
     event: {
@@ -63,15 +66,28 @@ export default function SearchBox(
     <div className='relative w-[500px] mt-6'
       style={props.styleProp}
     >
+      <Link href={'/'}>
+        {typeParams && queryParams && pageParams && <Image
+          width='50'
+          height='50'
+          alt=''
+          src='/logo.png'
+          className='absolute top-0 -left-16'
+          priority={true}
+        />}
+      </Link>
+
       <input
         type="text"
         value={query}
         onChange={handleChange}
+        onKeyDown={handleEnterAtInput}
         placeholder="검색어를 입력하세요"
         className='w-[500px] h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
       />
       <button
         onClick={() => handleSearch(query)}
+
         className='w-[70px] h-[50px] absolute top-0 right-0 flex items-center justify-center'>
         <i className='text-[30px] text-orange-600'><AiOutlineSearch /></i>
       </button>
