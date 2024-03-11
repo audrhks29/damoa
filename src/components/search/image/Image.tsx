@@ -12,6 +12,7 @@ export default function SearchImageAll_Image(props: { imgSrc: string }) {
       sizes="20vw"
       quality={50}
       priority={true}
+      className='object-contain'
       onError={() => setImageUrl(false)}
     />
   )

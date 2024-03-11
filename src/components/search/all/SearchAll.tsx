@@ -19,7 +19,7 @@ export default function SearchAll() {
     <div className="w-[800px]">
       {searchWebResults.length > 0 && <section>
         <h2>웹문서</h2>
-        <SearchWeb searchTypeResults={searchWebResults} />
+        <SearchWeb />
       </section>}
 
       {searchVclipResults.length > 0 && <section>
