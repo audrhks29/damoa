@@ -12,7 +12,7 @@
 | 배포       | <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white">                                                                                                                                                                                                                                                                                                                                      |
 
 
-[사이트 바로가기](https://use-search-api.vercel.app/)
+[사이트 바로가기](https://damoa.vercel.app/)
 
 
 ## 2. 주요기능
