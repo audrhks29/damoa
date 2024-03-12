@@ -1,3 +1,4 @@
+import MoreResult from "@/components/button/MoreResult";
 import BlogContents from "../../searchTypes/contents/BlogContents";
 
 export default function SearchAllBlog({ data }: { data: SearchBlogType[] }) {
@@ -7,6 +8,7 @@ export default function SearchAllBlog({ data }: { data: SearchBlogType[] }) {
       <ul>
         <BlogContents data={data} />
       </ul>
+      <MoreResult type="blog" />
     </section>
   )
 }

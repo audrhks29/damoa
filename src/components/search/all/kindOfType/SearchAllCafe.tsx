@@ -1,3 +1,4 @@
+import MoreResult from "@/components/button/MoreResult";
 import CafeContents from "../../searchTypes/contents/CafeContents";
 
 export default function SearchAllCafe({ data }: { data: SearchCafeType[] }) {
@@ -7,6 +8,7 @@ export default function SearchAllCafe({ data }: { data: SearchCafeType[] }) {
       <ul>
         <CafeContents data={data} />
       </ul>
+      <MoreResult type="cafe" />
     </section>
   )
 }

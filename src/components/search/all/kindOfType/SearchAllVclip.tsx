@@ -1,3 +1,4 @@
+import MoreResult from "@/components/button/MoreResult";
 import VclipContents from "../../searchTypes/contents/VclipContents";
 
 export default function SearchAllVclip({ data }: { data: SearchVclipType[] }) {
@@ -7,6 +8,7 @@ export default function SearchAllVclip({ data }: { data: SearchVclipType[] }) {
       <ul>
         <VclipContents data={data} />
       </ul>
+      <MoreResult type="vclip" />
     </section>
   )
 }
