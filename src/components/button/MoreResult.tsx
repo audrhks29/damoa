@@ -2,8 +2,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function MoreResult({ type }: { type: string }) {
   const router = useRouter();
-
   const params = useSearchParams();
+
   const queryParams = params.get('query');
 
   const handleClick = () => {

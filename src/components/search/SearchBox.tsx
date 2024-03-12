@@ -1,10 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
-import useSearchResultDataStore from '@/store/searchType-store';
-import useSearchAllStore from '@/store/searchAll-store';
 import { useRouter, useSearchParams } from 'next/navigation';
+
+import { AiOutlineSearch } from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
 
