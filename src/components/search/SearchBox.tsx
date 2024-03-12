@@ -14,60 +14,47 @@ export default function SearchBox(
   const router = useRouter();
   const params = useSearchParams();
 
-  const { fetchSearchTypeData } = useSearchResultDataStore();
-  const { fetchSearchData } = useSearchAllStore();
-
   const typeParams = params.get('type');
   const queryParams = params.get('query');
-  const pageParams = params.get('page');
 
   const [query, setQuery] = useState<string>(queryParams ? queryParams : "");
 
   useEffect(() => {
     // fix url
     const handleUrl = (query: string) => {
-      const page = Number(pageParams);
-      if (typeParams === "all" || !typeParams) {
-        fetchSearchData(query, page);
-      }
-      if (page && typeParams !== "all" && typeParams) fetchSearchTypeData(typeParams, query, page);
-      if (typeParams) router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
+      if (typeParams) router.push(`/search?type=${typeParams}&query=${query}`);
     }
 
     if (queryParams) handleUrl(queryParams);
-  }, [queryParams, pageParams, typeParams, fetchSearchTypeData, router, fetchSearchData])
+  }, [queryParams, typeParams, router])
 
   // search button click
   const handleSearch = (query: string) => {
-    const page = 1;
     if (typeParams === "all" || !typeParams) {
-      fetchSearchData(query, page);
-      router.push(`/search?type=all&query=${query}&page=${page}`);
+      router.push(`/search?type=all&query=${query}`);
     } else {
-      fetchSearchTypeData(typeParams, query, page);
-      router.push(`/search?type=${typeParams}&query=${query}&page=${page}`);
+      router.push(`/search?type=${typeParams}&query=${query}`);
     }
   };
 
-  const handleEnterAtInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") handleSearch(query)
-  }
+  // press EnterKey
+  const handleEnterAtInput
+    = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") handleSearch(query)
+    }
+
   // input change
-  const handleChange = (
-    event: {
-      target: {
-        value: React.SetStateAction<string>;
-      }
-    }) => {
-    setQuery(event.target.value);
-  };
+  const handleChange
+    = (event: { target: { value: React.SetStateAction<string> } }) => {
+      setQuery(event.target.value);
+    };
 
   return (
     <div className='relative w-[500px] mt-6'
       style={props.styleProp}
     >
       <Link href={'/'}>
-        {typeParams && queryParams && pageParams && <Image
+        {typeParams && queryParams && <Image
           width='50'
           height='50'
           alt=''

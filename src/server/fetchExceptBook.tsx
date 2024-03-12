@@ -1,6 +1,11 @@
 import axios from "axios";
 
-export default async function fetchWeb(query: string | null, pageParam: number) {
+export default async function fetchExceptBook(
+  type: string | null,
+  query: string | null,
+  size: number,
+  pageParam: number
+) {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const Kakao = axios.create({
@@ -11,7 +16,7 @@ export default async function fetchWeb(query: string | null, pageParam: number) 
   });
 
   try {
-    const response = await Kakao.get(`search/web?query=${query}&size=10&page=${pageParam}`);
+    const response = await Kakao.get(`search/${type}?query=${query}&size=${size}&page=${pageParam}`);
     return response.data
   } catch (error) {
     console.error('Error fetching search results:', error);

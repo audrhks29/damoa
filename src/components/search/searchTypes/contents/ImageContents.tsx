@@ -1,10 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function SearchImage(props: { searchTypeResults: SearchImageType[] }) {
+export default function ImageContents({ data }: { data: SearchImageType[] }) {
   return (
     <ul className="w-[800px] flex justify-between px-3 py-4 rounded-2xl border shadow">
-      {props.searchTypeResults && props.searchTypeResults.map((result: SearchImageType, index: number) => {
+      {data.map((result: SearchImageType, index: number) => {
 
         return (
           <li key={index}>

@@ -1,48 +1,36 @@
 "use client"
 
-import useSearchTypeStore from "@/store/searchType-store"
 import { useSearchParams } from "next/navigation"
 
 import SearchBox from "@/components/search/SearchBox"
 import TypeSection from "@/components/TypeSection"
 import SearchAll from "@/components/search/all/SearchAll"
-import SearchWeb from "@/components/search/web/SearchWeb"
-import SearchVclip from "@/components/search/vclip/SearchVclip"
-import SearchBlog from "@/components/search/blog/SearchBlog"
-import SearchBook from "@/components/search/book/SearchBook"
-import SearchCafe from "@/components/search/cafe/SearchCafe"
-import SearchOnlyImage from "@/components/search/image/SearchOnlyImage"
-
+import SearchWeb from "@/components/search/searchTypes/SearchWeb"
+import SearchVclip from "@/components/search/searchTypes/SearchVclip"
+import SearchBlog from "@/components/search/searchTypes/SearchBlog"
+import SearchBook from "@/components/search/searchTypes/SearchBook"
+import SearchCafe from "@/components/search/searchTypes/SearchCafe"
+import SearchImage from "@/components/search/searchTypes/SearchImage"
 
 export default function SearchResult() {
-  const {
-    searchWebResults,
-    searchVclipResults,
-    searchImageResults,
-    searchBlogResults,
-    searchBookResults,
-    searchCafeResults,
-  } = useSearchTypeStore()
-
   const params = useSearchParams()
 
-  const typeParam = params.get('type');
-
+  const typeParams = params.get('type');
   return (
 
-    <main className="inner">
+    <main className="inner pb-6">
       <SearchBox
         styleProp={{ marginRight: 'auto' }} />
 
       <TypeSection />
 
-      {typeParam === "all" && <SearchAll />}
-      {typeParam === "web" && <SearchWeb />}
-      {typeParam === "vclip" && <SearchVclip searchTypeResults={searchVclipResults} />}
-      {typeParam === "image" && <SearchOnlyImage searchTypeResults={searchImageResults} />}
-      {typeParam === "blog" && <SearchBlog searchTypeResults={searchBlogResults} />}
-      {typeParam === "book" && <SearchBook searchTypeResults={searchBookResults} />}
-      {typeParam === "cafe" && <SearchCafe searchTypeResults={searchCafeResults} />}
+      {typeParams === "all" && <SearchAll />}
+      {typeParams === "web" && <SearchWeb />}
+      {typeParams === "vclip" && <SearchVclip />}
+      {typeParams === "image" && <SearchImage />}
+      {typeParams === "blog" && <SearchBlog />}
+      {typeParams === "book" && <SearchBook />}
+      {typeParams === "cafe" && <SearchCafe />}
 
     </main>
 
