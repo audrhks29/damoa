@@ -1,12 +1,9 @@
 import React from 'react';
 
-import Link from "next/link"
-import Image from "next/image";
-
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 
-import fetchExceptBook from "@/server/fetchExceptBook";
+import FetchExceptBook from "@/server/FetchExceptBook";
 
 import MoreButton from '@/components/button/MoreButton';
 import EndData from '@/components/displaySearchState/EndData';
@@ -20,7 +17,7 @@ export default function SearchVclip() {
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: ['vclipData', typeParams, queryParams],
-    queryFn: ({ pageParam = 0 }) => fetchExceptBook(typeParams, queryParams, 10, pageParam),
+    queryFn: ({ pageParam = 0 }) => FetchExceptBook(typeParams, queryParams, 10, pageParam),
     select: (data) => data.pages.map(item => item.documents),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {

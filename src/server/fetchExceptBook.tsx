@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function fetchExceptBook(
+export default async function FetchExceptBook(
   type: string | null,
   query: string | null,
   size: number,

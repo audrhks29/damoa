@@ -1,12 +1,9 @@
 import React from "react";
 
-import Image from "next/image";
-import Link from "next/link"
-
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { useSearchParams } from "next/navigation";
 
-import fetchBook from "@/server/fetchBook";
+import FetchBook from "@/server/FetchBook";
 
 import MoreButton from "@/components/button/MoreButton";
 import EndData from "@/components/displaySearchState/EndData";
@@ -20,7 +17,7 @@ export default function SearchBook() {
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: ['bookData', typeParams, queryParams],
-    queryFn: ({ pageParam = 0 }) => fetchBook(queryParams, 10, pageParam),
+    queryFn: ({ pageParam = 0 }) => FetchBook(queryParams, 10, pageParam),
     select: (data) => data.pages.map(item => item.documents),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
