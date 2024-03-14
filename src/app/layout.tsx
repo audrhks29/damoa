@@ -25,9 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-      </Head>
+      </head>
       <Suspense fallback={<Loading />}>
         <body className={inter.className}>
           <Providers> {children}</Providers>
