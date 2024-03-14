@@ -8,6 +8,7 @@ export default function SearchImageAll_Image(props: { imgSrc: string }) {
   return (
     <Image
       src={imageUrl ? props.imgSrc : '/cantFindImage.png'}
+      // src={props.imgSrc}
       alt="image"
       fill
       sizes="20vw"

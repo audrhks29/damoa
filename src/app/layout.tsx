@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   }
+
 };
 
 export default function RootLayout({
@@ -25,9 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-      </head>
       <Suspense fallback={<Loading />}>
         <body className={inter.className}>
           <Providers> {children}</Providers>
