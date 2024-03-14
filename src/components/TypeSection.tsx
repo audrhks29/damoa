@@ -10,7 +10,7 @@ export default function TypeSection() {
 
   // click type button
   const handleType = (type: string) => {
-    router.push(`/search?type=${type}&query=${queryParams}&page=1`);
+    router.push(`/search?type=${type}&query=${queryParams}`);
   }
 
   return (

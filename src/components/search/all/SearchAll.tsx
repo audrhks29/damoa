@@ -66,6 +66,6 @@ export default function SearchAll() {
       {blogAllData && <SearchAllBlog data={blogAllData} />}
       {bookAllData && <SearchAllBook data={bookAllData} />}
       {cafeAllData && <SearchAllCafe data={cafeAllData} />}
-    </div >
+    </div>
   )
 }
