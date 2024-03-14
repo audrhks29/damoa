@@ -25,7 +25,7 @@ export default function SearchBox(
     }
 
     if (queryParams) handleUrl(queryParams);
-  }, [queryParams, typeParams, router])
+  }, [])
 
   // search button click
   const handleSearch = (query: string) => {
