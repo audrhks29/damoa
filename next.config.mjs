@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -11,15 +12,6 @@ const nextConfig = {
         hostname: "**",
       }
     ]
-  },
-  trailingSlash: true,
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/_next/static/chunks/pages/:path*',
-      },
-    ];
   },
 };
 
