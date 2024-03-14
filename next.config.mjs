@@ -11,7 +11,16 @@ const nextConfig = {
         hostname: "**",
       }
     ]
-  }
+  },
+  trailingSlash: true,
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: '/_next/static/chunks/pages/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
