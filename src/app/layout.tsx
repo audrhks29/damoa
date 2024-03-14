@@ -26,11 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Suspense fallback={<Loading />}>
-        <body className={inter.className}>
-          <Providers> {children}</Providers>
-        </body>
-      </Suspense>
+
+      <body className={inter.className}>
+        <Providers> {children}</Providers>
+      </body>
+
     </html>
   );
 }
