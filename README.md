@@ -33,6 +33,19 @@
  1. vercel 배포 시 402에러 발생 -> Hobby 계정 이미지 최적화 종료
      - 해결방안 : Netlify를 이용한 배포
      - 문제발생 : Netlify를 이용한 배포 시, 검색 후 무한 새로고침 문제 발생
+     - 해당 코드 주석으로 해결(vercel, dev환경에서 왜 오류가 발생하지 않는지 미해결)
+        ```js
+        // components/search/SearchBox.tsx
+
+        useEffect(() => {
+          // fix url
+          const handleUrl = (query: string) => {
+            if (typeParams) router.push(`/search?type=${typeParams}&query=${query}`);
+          }
+
+          if (queryParams) handleUrl(queryParams);
+        }, [queryParams, router, typeParams])
+        ```
 ### 2. 기능개선
   1. UI 개선
      1. 전체적인 UI개선 필요

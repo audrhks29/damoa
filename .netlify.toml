@@ -1,7 +1,0 @@
-[build]
-  command = "yarn build"
-  publish = "out"
-[dev]
-  command = "yarn dev"
-  publish = "out"
-  framework = { name = "nextjs", version = "14.1.3" }
