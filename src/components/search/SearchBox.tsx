@@ -18,14 +18,14 @@ export default function SearchBox(
 
   const [query, setQuery] = useState<string>(queryParams ? queryParams : "");
 
-  useEffect(() => {
-    // fix url
-    const handleUrl = (query: string) => {
-      if (typeParams) router.push(`/search?type=${typeParams}&query=${query}`);
-    }
+  // useEffect(() => {
+  //   // fix url
+  //   const handleUrl = (query: string) => {
+  //     if (typeParams) router.push(`/search?type=${typeParams}&query=${query}`);
+  //   }
 
-    if (queryParams) handleUrl(queryParams);
-  }, [])
+  //   if (queryParams) handleUrl(queryParams);
+  // }, [queryParams, router, typeParams])
 
   // search button click
   const handleSearch = (query: string) => {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function FetchBook(
+export default async function fetchBook(
   query: string | null,
   size: number,
   pageParam: number
