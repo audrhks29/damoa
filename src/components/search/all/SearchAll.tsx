@@ -11,6 +11,7 @@ import SearchAllImage from "./kindOfType/SearchAllImage";
 import SearchAllBlog from "./kindOfType/SearchAllBlog";
 import SearchAllBook from "./kindOfType/SearchAllBook";
 import SearchAllCafe from "./kindOfType/SearchAllCafe";
+import NoSearchData from "@/components/displaySearchState/NoSearchData";
 
 export default function SearchAll() {
   const params = useSearchParams()
@@ -60,12 +61,22 @@ export default function SearchAll() {
 
   return (
     <div className="w-[800px]">
-      {webAllData && <SearchAllWeb data={webAllData} />}
-      {vclipAllData && <SearchAllVclip data={vclipAllData} />}
-      {imageAllData && <SearchAllImage data={imageAllData} />}
-      {blogAllData && <SearchAllBlog data={blogAllData} />}
-      {bookAllData && <SearchAllBook data={bookAllData} />}
-      {cafeAllData && <SearchAllCafe data={cafeAllData} />}
+      {webAllData && webAllData.length > 0 && <SearchAllWeb data={webAllData} />}
+      {vclipAllData && vclipAllData.length > 0 && <SearchAllVclip data={vclipAllData} />}
+      {imageAllData && imageAllData.length > 0 && <SearchAllImage data={imageAllData} />}
+      {blogAllData && blogAllData.length > 0 && <SearchAllBlog data={blogAllData} />}
+      {bookAllData && bookAllData.length > 0 && <SearchAllBook data={bookAllData} />}
+      {cafeAllData && cafeAllData.length > 0 && <SearchAllCafe data={cafeAllData} />}
+
+      {
+        webAllData && webAllData.length === 0
+        && vclipAllData && vclipAllData.length === 0
+        && imageAllData && imageAllData.length === 0
+        && blogAllData && blogAllData.length === 0
+        && bookAllData && bookAllData.length === 0
+        && cafeAllData && cafeAllData.length === 0
+        && <NoSearchData style={{ width: "800px" }} />
+      }
     </div>
   )
 }

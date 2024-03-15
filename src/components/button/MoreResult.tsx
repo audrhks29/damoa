@@ -11,11 +11,12 @@ export default function MoreResult({ type }: { type: string }) {
   }
 
   return (
-    <div
-      className="text-right text-[14px] cursor-pointer hover:text-orange-600"
-      onClick={handleClick}
-    >
-      <span>검색결과 더보기</span>
+    <div className="text-right text-[14px]">
+      <span
+        onClick={handleClick}
+        className="cursor-pointer hover:text-orange-600"
+      >
+        검색결과 더보기</span>
     </div>
   )
 }

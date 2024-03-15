@@ -8,6 +8,7 @@ import fetchExceptBook from "@/server/fetchExceptBook";
 import MoreButton from '@/components/button/MoreButton';
 import EndData from '@/components/displaySearchState/EndData';
 import CafeContents from './contents/CafeContents';
+import NoSearchData from '@/components/displaySearchState/NoSearchData';
 
 export default function SearchCafe() {
   const params = useSearchParams();
@@ -22,7 +23,7 @@ export default function SearchCafe() {
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       const lastDataPage = Math.ceil(lastPage.meta.pageable_count / 10);
-      if (lastDataPage !== lastPageParam)
+      if (lastDataPage !== lastPageParam && lastDataPage !== 0)
         return allPages.length + 1;
     }
   })
@@ -34,9 +35,17 @@ export default function SearchCafe() {
           <CafeContents key={index} data={item} />
         ))}
       </ul>
+
       {hasNextPage
-        ? <MoreButton fetchNextPage={fetchNextPage} />
-        : <EndData />}
+        && <MoreButton
+          fetchNextPage={fetchNextPage}
+          style={{ width: "800px" }}
+        />}
+      {data && data[0].length > 0 && !hasNextPage
+        && <EndData style={{ width: "800px" }} />}
+      {data && data[0].length === 0 && !hasNextPage
+        && <NoSearchData style={{ width: "800px" }} />}
+
     </React.Fragment>
   )
 }
