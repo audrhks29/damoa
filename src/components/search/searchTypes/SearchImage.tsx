@@ -30,25 +30,25 @@ export default function SearchImage() {
 
   return (
     <React.Fragment>
-      {data && data[0].length > 0 && <div className="w-[1200px] px-3 py-4 rounded-2xl border shadow columns-5 md:columns-5 lg:columns-5 gap-4">
-        {data?.map(item => (
-          item.map((result: SearchImageType, index: number) => {
-            if (result.image_url !== "")
-              return (
-                <div key={index}
-                  className="relative "
-                  style={{
-                    height: "100px"
-                  }}
-                >
-                  <SearchImageAll_Image
-                    imgSrc={result.image_url}
-                  />
-                </div>
-              )
-          })
-        ))}
-      </div>}
+      {data && data[0].length > 0
+        && <div className="w-[1200px] px-3 py-4 rounded-2xl border shadow columns-4 md:columns-4 lg:columns-4">
+          <div className="px-1 grid auto-rows-[10px] gap-[1px]">
+            {data?.map(item => (
+              item.map((result: SearchImageType, index: number) => {
+                if (result.image_url !== "")
+                  return (
+                    <SearchImageAll_Image
+                      imgSrc={result.image_url}
+                      key={index}
+                      photoWidth={result.width}
+                      photoHeight={result.height}
+                      url={result.doc_url}
+                    />
+                  )
+              })))
+            }
+          </div>
+        </div>}
 
       {hasNextPage
         && <MoreButton

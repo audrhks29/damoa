@@ -1,21 +1,42 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { useState } from "react";
 
-export default function SearchImageAll_Image(props: { imgSrc: string }) {
+export default function SearchImageAll_Image(props: {
+  imgSrc: string
+  photoWidth: number;
+  photoHeight: number;
+  url: string;
+}) {
   const [imageUrl, setImageUrl] = useState(true);
 
+  const widthHeightRatio = props.photoHeight / props.photoWidth
+  const galleryHeight = Math.ceil(250 * widthHeightRatio);
+  const photoSpans = Math.ceil(galleryHeight / 10); +1
+
   return (
-    <Image
-      src={imageUrl ? props.imgSrc : '/cantFindImage.png'}
-      alt="image"
-      fill
-      sizes="20vw"
-      quality={50}
-      priority={true}
-      className='object-contain'
-      onError={() => setImageUrl(false)}
-    />
+    <div className="w-[270px] justify-self-center"
+      style={{ gridRow: `span ${photoSpans}` }}
+    >
+      <Link href={props.url}
+        target="_black"
+        className="grid place-content-center">
+        <div className="overflow-hidden group">
+          <Image
+            src={imageUrl ? props.imgSrc : '/cantFindImage.png'}
+            alt="image"
+            width={270}
+            height={galleryHeight}
+            sizes="270px"
+            quality={50}
+            priority={true}
+            className='object-cover hover:scale-105 transition-all'
+            onError={() => setImageUrl(false)}
+          />
+        </div>
+      </Link>
+    </div>
   )
 
 }
