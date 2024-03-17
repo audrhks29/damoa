@@ -1,4 +1,5 @@
 import timeArray from '@/assets/weatherTimeList.json'
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function WeatherInfo({ data }: { data: WeatherDataType[] }) {
@@ -20,8 +21,8 @@ export default function WeatherInfo({ data }: { data: WeatherDataType[] }) {
 
 
   return (
-    <div className="text-center border border-orange-500 mt-6 p-3 rounded-3xl">
-      <h2 className='text-left'>날씨</h2>
+    <div className="text-center border border-orange-500 mt-6 p-6 rounded-3xl">
+      <h2 className='text-left text-[24px]'>날씨</h2>
 
       <div className='flex h-9 leading-9'>
         <div
@@ -45,7 +46,56 @@ export default function WeatherInfo({ data }: { data: WeatherDataType[] }) {
         {timeArray.map((item, index) => {
           if (timeSlot ? index <= 11 : index >= 12)
             return (
-              <li key={index}>
+              <li key={index} className='w-14 flex flex-col items-center'>
+                <p className='text-[12px]'>{item.text}</p>
+
+                {SKY_data.map((sky, idx: number) => {
+                  if (sky.fcstTime === item.time)
+                    if (sky.fcstValue === "1") {
+                      return (
+                        <p key={idx}>
+                          {index > 5 && index < 18 ? <Image
+                            src={'/images/morning.svg'}
+                            width={30}
+                            height={30}
+                            alt=''
+                          /> : <Image
+                            src={'/images/evening.svg'}
+                            width={30}
+                            height={30}
+                            alt=''
+                          />}
+                        </p>
+                      )
+                    } else if (sky.fcstValue === "3") {
+                      return (
+                        <p key={idx}>
+                          {index > 5 && index < 18 ? <Image
+                            src={'/images/lotOfCloud_morning.svg'}
+                            width={30}
+                            height={30}
+                            alt=''
+                          /> : <Image
+                            src={'/images/lotOfCloud_night.svg'}
+                            width={30}
+                            height={30}
+                            alt=''
+                          />}
+                        </p>
+                      )
+                    } else if (sky.fcstValue === "4") {
+                      return (
+                        <p key={idx}>
+                          <Image
+                            src={'/images/cloud.svg'}
+                            width={30}
+                            height={30}
+                            alt=''
+                          />
+                        </p>
+                      )
+                    }
+                })}
 
                 {TMP_data.map((tmp, idx: number) => {
                   if (tmp.fcstTime === item.time)
@@ -53,19 +103,6 @@ export default function WeatherInfo({ data }: { data: WeatherDataType[] }) {
                       <p key={idx} className='text-[14px]'>{tmp.fcstValue}℃</p>
                     )
                 })}
-
-                {SKY_data.map((sky, idx: number) => {
-                  if (sky.fcstTime === item.time)
-                    if (sky.fcstValue === "1") {
-                      return <p key={idx} className="w-14 text-[14px]">맑음</p>
-                    } else if (sky.fcstValue === "3") {
-                      return <p key={idx} className="w-14 text-[14px]">구름</p>
-                    } else if (sky.fcstValue === "4") {
-                      return <p key={idx} className="w-14 text-[14px]">흐림</p>
-                    }
-                })}
-
-                <p className='text-[12px]'>{item.text}</p>
               </li>
             )
         })}
