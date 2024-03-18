@@ -18,15 +18,6 @@ export default function SearchBox(
 
   const [query, setQuery] = useState<string>(queryParams ? queryParams : "");
 
-  // useEffect(() => {
-  //   // fix url
-  //   const handleUrl = (query: string) => {
-  //     if (typeParams) router.push(`/search?type=${typeParams}&query=${query}`);
-  //   }
-
-  //   if (queryParams) handleUrl(queryParams);
-  // }, [queryParams, router, typeParams])
-
   // search button click
   const handleSearch = (query: string) => {
     if (typeParams === "all" || !typeParams) {
@@ -49,7 +40,7 @@ export default function SearchBox(
     };
 
   return (
-    <div className='relative w-[500px] mt-6'
+    <div className='relative sm:w-[400px] md:w-[500px] lg:w-[500px] mt-6'
       style={props.styleProp}
     >
       <Link href={'/'}>
@@ -69,11 +60,11 @@ export default function SearchBox(
         onChange={handleChange}
         onKeyDown={handleEnterAtInput}
         placeholder="검색어를 입력하세요"
-        className='w-[500px] h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
+        className='sm:w-[400px] md:w-[500px] lg:w-[500px] h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
       />
+
       <button
         onClick={() => handleSearch(query)}
-
         className='w-[70px] h-[50px] absolute top-0 right-0 flex items-center justify-center'>
         <i className='text-[30px] text-orange-600'><AiOutlineSearch /></i>
       </button>

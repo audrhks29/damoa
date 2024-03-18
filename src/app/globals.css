@@ -6,3 +6,12 @@
   margin:auto;
   width:1300px;
 }
+@media (min-width: 640px) {
+  .inner{width:540px;}
+}
+@media (min-width: 768px) {
+  .inner{width:700px;}
+}
+@media (min-width: 1024px) {
+  .inner{width:1100px;}
+}
