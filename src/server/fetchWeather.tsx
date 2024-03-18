@@ -6,7 +6,7 @@ export default async function fetchWeather() {
 
   try {
     const response = await axios.get(
-      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240316&base_time=0500&nx=55&ny=127`
+      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240317&base_time=0500&nx=55&ny=127`
     );
     return response.data.response.body.items.item
   } catch (error) {
