@@ -1,5 +1,5 @@
-import CafeContents from "../../searchTypes/contents/CafeContents";
 import MoreResult from "@/components/button/MoreResult";
+import CafeContents from "../../contents/CafeContents";
 
 export default function SearchAllCafe({ data }: { data: SearchCafeType[] }) {
   return (

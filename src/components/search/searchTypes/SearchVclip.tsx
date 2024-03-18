@@ -7,8 +7,8 @@ import fetchExceptBook from "@/server/fetchExceptBook";
 
 import MoreButton from '@/components/button/MoreButton';
 import EndData from '@/components/displaySearchState/EndData';
-import VclipContents from './contents/VclipContents';
 import NoSearchData from '@/components/displaySearchState/NoSearchData';
+import VclipContents from '../contents/VclipContents';
 
 export default function SearchVclip() {
   const params = useSearchParams();

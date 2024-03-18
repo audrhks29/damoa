@@ -7,8 +7,8 @@ import fetchBook from "@/server/fetchBook";
 
 import MoreButton from "@/components/button/MoreButton";
 import EndData from "@/components/displaySearchState/EndData";
-import BookContents from "./contents/BookContents";
 import NoSearchData from "@/components/displaySearchState/NoSearchData";
+import BookContents from "../contents/BookContents";
 
 export default function SearchBook() {
   const params = useSearchParams();

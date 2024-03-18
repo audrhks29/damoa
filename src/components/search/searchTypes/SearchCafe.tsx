@@ -7,8 +7,8 @@ import fetchExceptBook from "@/server/fetchExceptBook";
 
 import MoreButton from '@/components/button/MoreButton';
 import EndData from '@/components/displaySearchState/EndData';
-import CafeContents from './contents/CafeContents';
 import NoSearchData from '@/components/displaySearchState/NoSearchData';
+import CafeContents from '../contents/CafeContents';
 
 export default function SearchCafe() {
   const params = useSearchParams();

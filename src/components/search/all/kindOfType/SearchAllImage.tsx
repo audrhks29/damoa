@@ -1,5 +1,5 @@
-import ImageContents from "../../searchTypes/contents/ImageContents";
 import MoreResult from "@/components/button/MoreResult";
+import ImageContents from "../../contents/ImageContents";
 
 export default function SearchAllImage({ data }: { data: SearchImageType[] }) {
   return (

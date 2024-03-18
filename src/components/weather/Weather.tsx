@@ -31,6 +31,7 @@ export default function Weather() {
 
   return (
     <section className="border border-orange-600 p-6 rounded-3xl text-center mt-6">
+      <p className="text-right text-[14px] text-[#ccc]">현재 위치 기준</p>
       {data && <TodayInfo
         data={data}
         today={today}

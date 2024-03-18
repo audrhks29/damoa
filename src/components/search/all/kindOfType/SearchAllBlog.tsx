@@ -1,5 +1,5 @@
-import BlogContents from "../../searchTypes/contents/BlogContents";
 import MoreResult from "@/components/button/MoreResult";
+import BlogContents from "../../contents/BlogContents";
 
 export default function SearchAllBlog({ data }: { data: SearchBlogType[] }) {
   return (

@@ -11,14 +11,36 @@ import SearchBlog from "@/components/search/searchTypes/SearchBlog"
 import SearchBook from "@/components/search/searchTypes/SearchBook"
 import SearchCafe from "@/components/search/searchTypes/SearchCafe"
 import SearchImage from "@/components/search/searchTypes/SearchImage"
+import { useQuery } from "@tanstack/react-query"
+import fetchWeather from "@/server/fetchWeather"
+import SearchSide from "@/components/search/side/SearchSide"
 
 export default function SearchResult() {
   const params = useSearchParams()
 
+  const { data } = useQuery({
+    queryKey: ['weatherData'],
+    queryFn: fetchWeather,
+    staleTime: Infinity,
+    gcTime: Infinity,
+    refetchOnMount: false
+  })
+
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const day = date.getDate();
+
+  const hour = date.getHours()
+  const nowHour = `${hour}00`
+
+  const today = `${year}${month}${day}`;
+
   const typeParams = params.get('type');
+
   return (
 
-    <main className="inner pb-6">
+    <main className="inner pb-6 relative">
       <SearchBox
         styleProp={{ marginRight: 'auto' }} />
 
@@ -31,6 +53,12 @@ export default function SearchResult() {
       {typeParams === "blog" && <SearchBlog />}
       {typeParams === "book" && <SearchBook />}
       {typeParams === "cafe" && <SearchCafe />}
+
+      {data && typeParams !== "image" && <SearchSide
+        data={data}
+        today={today}
+        nowHour={nowHour}
+      />}
 
     </main>
 

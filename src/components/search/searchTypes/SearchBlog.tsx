@@ -7,8 +7,8 @@ import fetchExceptBook from "@/server/fetchExceptBook";
 
 import MoreButton from "@/components/button/MoreButton";
 import EndData from "@/components/displaySearchState/EndData";
-import BlogContents from "./contents/BlogContents";
 import NoSearchData from "@/components/displaySearchState/NoSearchData";
+import BlogContents from "../contents/BlogContents";
 
 export default function SearchBlog() {
   const params = useSearchParams();
@@ -27,7 +27,7 @@ export default function SearchBlog() {
         return allPages.length + 1;
     }
   })
-  console.log(data);
+
   return (
     <React.Fragment>
       <ul className="w-[800px]">

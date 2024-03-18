@@ -7,8 +7,9 @@ import fetchExceptBook from "@/server/fetchExceptBook";
 
 import MoreButton from "@/components/button/MoreButton";
 import EndData from "@/components/displaySearchState/EndData";
-import WebContents from "./contents/WebContents";
+
 import NoSearchData from "@/components/displaySearchState/NoSearchData";
+import WebContents from "../contents/WebContents";
 
 export default function SearchWeb() {
   const params = useSearchParams();

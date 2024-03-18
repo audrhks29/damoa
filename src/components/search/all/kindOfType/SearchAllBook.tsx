@@ -1,5 +1,5 @@
-import BookContents from "../../searchTypes/contents/BookContents";
 import MoreResult from "@/components/button/MoreResult";
+import BookContents from "../../contents/BookContents";
 
 export default function SearchAllBook({ data }: { data: SearchBookType[] }) {
   return (
