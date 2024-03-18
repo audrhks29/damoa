@@ -22,10 +22,9 @@ export default function Weather() {
     gcTime: Infinity,
     refetchOnMount: false
   })
-  console.log(data);
 
   return (
-    <section className="border border-orange-600 p-6 rounded-3xl text-center">
+    <section className="border border-orange-600 p-6 rounded-3xl text-center mt-6">
       <div className="flex border-b border-orange-600">
         <p
           className='text-left text-[20px] p-1 cursor-pointer'
