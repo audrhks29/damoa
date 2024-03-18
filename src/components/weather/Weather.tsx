@@ -1,9 +1,12 @@
 "use client"
 import fetchWeather from "@/server/fetchWeather"
 import { useQuery } from "@tanstack/react-query"
-import WeatherInfo from "./WeatherInfo";
+
 import { useState } from "react";
+
+import WeatherInfo from "./WeatherInfo";
 import RainFallInfo from "./RainFallInfo";
+import TodayInfo from "./TodayInfo";
 
 export default function Weather() {
   const [currentMenu, setCurrentMenu] = useState<string>("weather");
@@ -12,6 +15,9 @@ export default function Weather() {
   const year = date.getFullYear();
   const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const day = date.getDate();
+
+  const hour = date.getHours()
+  const nowHour = `${hour}00`
 
   const today = `${year}${month}${day}`;
 
@@ -25,6 +31,12 @@ export default function Weather() {
 
   return (
     <section className="border border-orange-600 p-6 rounded-3xl text-center mt-6">
+      {data && <TodayInfo
+        data={data}
+        today={today}
+        nowHour={nowHour}
+      />}
+
       <div className="flex border-b border-orange-600">
         <p
           className='text-left text-[20px] p-1 cursor-pointer'
@@ -43,15 +55,19 @@ export default function Weather() {
           }}
         >강수</p>
       </div>
+
       {data && currentMenu === "weather"
         && <WeatherInfo
           data={data}
           today={today}
+          nowHour={nowHour}
         />}
+
       {data && currentMenu === "rainFall"
         && <RainFallInfo
           data={data}
           today={today}
+          nowHour={nowHour}
         />}
 
     </section>

@@ -5,19 +5,16 @@ import Image from 'next/image';
 import timeArray from '@/assets/weatherTimeList.json'
 import TimeSlot from './common/button/TimeSlot';
 
-export default function WeatherInfo({ data, today }: {
+export default function WeatherInfo({ data, today, nowHour }: {
   data: WeatherDataType[];
   today: string;
+  nowHour: string;
 }) {
   const [timeSlot, setTimeSlot] = useState("morning");
 
   // 1시간 기온
   const TMP_data = data.filter(item => item.category === "TMP" && item.fcstDate === today);
 
-  // 일 최저기온
-  const TMN_data = data.filter(item => item.category === "TMN" && item.fcstDate === today);
-  // 일 최고기온
-  const TMX_data = data.filter(item => item.category === "TMX" && item.fcstDate === today);
   // 하늘 상태
   const SKY_data = data.filter(item => item.category === "SKY" && item.fcstDate === today);
 
@@ -33,7 +30,11 @@ export default function WeatherInfo({ data, today }: {
         {timeArray.map((item, index) => {
           if (timeSlot === "morning" ? index <= 11 : index >= 12)
             return (
-              <li key={index} className='w-14 flex flex-col items-center'>
+              <li
+                key={index}
+                className='w-14 flex flex-col items-center rounded-2xl'
+                style={{ border: nowHour === item.time ? "1px solid #EA580C" : "" }}
+              >
                 <p className='text-[12px]'>{item.text}</p>
 
                 {SKY_data.map((sky, idx: number) => {

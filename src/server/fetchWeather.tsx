@@ -1,6 +1,25 @@
 import axios from "axios";
 
 export default async function fetchWeather() {
+  const coords = await getMyLocation();
+  console.log(coords);
+  return await getWeatherData();
+}
+
+function getMyLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve(position.coords);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+async function getWeatherData() {
   const baseUrl = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
   const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
@@ -13,4 +32,3 @@ export default async function fetchWeather() {
     console.error('Error fetching search results:', error);
   }
 }
-

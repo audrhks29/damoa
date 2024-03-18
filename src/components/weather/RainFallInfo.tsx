@@ -7,9 +7,10 @@ import { FaBeer } from "react-icons/fa";
 
 // import { IoWaterOutline } from "react-icons/io5";
 
-export default function RainFallInfo({ data, today }: {
+export default function RainFallInfo({ data, today, nowHour }: {
   data: WeatherDataType[];
   today: string;
+  nowHour: string;
 }) {
   const [timeSlot, setTimeSlot] = useState("morning");
   // 강수 확률
@@ -30,7 +31,11 @@ export default function RainFallInfo({ data, today }: {
         {timeArray.map((item, index) => {
           if (timeSlot === "morning" ? index <= 11 : index >= 12)
             return (
-              <li key={index} className='w-14 flex flex-col items-center'>
+              <li
+                key={index}
+                className='w-14 flex flex-col items-center rounded-2xl'
+                style={{ border: nowHour === item.time ? "1px solid #EA580C" : "" }}
+              >
                 <p className='text-[12px]'>{item.text}</p>
 
                 {POP_data.map((pop, idx: number) => {
