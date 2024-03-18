@@ -25,7 +25,7 @@ async function getWeatherData(x: number, y: number): Promise<any> {
 
   try {
     const response = await axios.get(
-      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240317&base_time=0500&nx=${x}&ny=${y}`
+      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240318&base_time=0500&nx=${x}&ny=${y}`
     );
     return response.data.response.body.items.item
   } catch (error) {
