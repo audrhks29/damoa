@@ -13,8 +13,7 @@ export default function TodayInfo({ data, today, nowHour }: {
   const TMX_data = data.find(item => item.category === "TMX" && item.fcstDate === today);
   // 현재 하늘 상태
   const SKY_data = data.find(item => item.category === "SKY" && item.fcstDate === today && item.fcstTime === nowHour);
-  console.log(SKY_data);
-  console.log(nowHour);
+
   return (
     <div className="mb-3">
       <div className="flex items-center justify-center">
