@@ -1,100 +1,96 @@
-import React, { useState } from 'react';
-
 import Image from 'next/image';
-
-import timeArray from '@/assets/weatherTimeList.json'
-import TimeSlot from './common/button/TimeSlot';
 
 export default function WeatherInfo({ data, today, nowHour }: {
   data: WeatherDataType[];
   today: string;
   nowHour: string;
 }) {
-  const [timeSlot, setTimeSlot] = useState("morning");
 
   // 1시간 기온
-  const TMP_data = data.filter(item => item.category === "TMP" && item.fcstDate === today);
+  const TMP_data = data.filter(item => item.category === "TMP");
 
   // 하늘 상태
-  const SKY_data = data.filter(item => item.category === "SKY" && item.fcstDate === today);
+  const SKY_data = data.filter(item => item.category === "SKY");
+
+  const fcstTimeArray = TMP_data.map(item => {
+    return {
+      fcstDate: item.fcstDate,
+      fcstTime: item.fcstTime,
+      displayTime: `${item.fcstTime.slice(0, 2)}시`
+    }
+  });
 
   return (
-    <React.Fragment>
-      <TimeSlot
-        timeSlot={timeSlot}
-        setTimeSlot={setTimeSlot}
-      />
+    <ul className='flex flex-nowrap overflow-hidden pt-6'>
 
-      <ul className='flex'>
-        {timeArray.map((item, index) => {
-          if (timeSlot === "morning" ? index <= 11 : index >= 12)
-            return (
-              <li
-                key={index}
-                className='w-14 h-[96px] flex flex-col items-center justify-between rounded-2xl'
-                style={{ border: nowHour === item.time ? "1px solid #EA580C" : "" }}
-              >
-                <p className='text-[12px]'>{item.text}</p>
+      {fcstTimeArray.map((time, index) => {
+        return (
+          <li
+            key={index}
+            className='w-[60px] p-1 flex-shrink-0 rounded-2xl h-[106px]'
+            style={{ border: nowHour === time.fcstTime ? "1px solid #EA580C" : "" }}
+          >
+            
+            <p className='text-[12px]'>{time.displayTime}</p>
 
-                {SKY_data.map((sky, idx: number) => {
-                  if (sky.fcstTime === item.time)
-                    if (sky.fcstValue === "1") {
-                      return (
-                        <p key={idx}>
-                          {index > 5 && index < 18 ? <Image
-                            src={'/images/morning.svg'}
-                            width={55}
-                            height={55}
-                            alt=''
-                          /> : <Image
-                            src={'/images/evening.svg'}
-                            width={55}
-                            height={55}
-                            alt=''
-                          />}
-                        </p>
-                      )
-                    } else if (sky.fcstValue === "3") {
-                      return (
-                        <p key={idx}>
-                          {index > 5 && index < 18 ? <Image
-                            src={'/images/lotOfCloud_morning.svg'}
-                            width={55}
-                            height={55}
-                            alt=''
-                          /> : <Image
-                            src={'/images/lotOfCloud_night.svg'}
-                            width={55}
-                            height={55}
-                            alt=''
-                          />}
-                        </p>
-                      )
-                    } else if (sky.fcstValue === "4") {
-                      return (
-                        <p key={idx}>
-                          <Image
-                            src={'/images/cloud.svg'}
-                            width={55}
-                            height={55}
-                            alt=''
-                          />
-                        </p>
-                      )
-                    }
-                })}
+            {SKY_data.map((sky, idx: number) => {
+              if (sky.fcstTime === time.fcstTime && sky.fcstDate === time.fcstDate)
+                if (sky.fcstValue === "1") {
+                  return (
+                    <p key={idx}>
+                      {index > 5 && index < 18 ? <Image
+                        src={'/images/morning.svg'}
+                        width={50}
+                        height={50}
+                        alt=''
+                      /> : <Image
+                        src={'/images/evening.svg'}
+                        width={50}
+                        height={50}
+                        alt=''
+                      />}
+                    </p>
+                  )
+                } else if (sky.fcstValue === "3") {
+                  return (
+                    <p key={idx}>
+                      {index > 5 && index < 18 ? <Image
+                        src={'/images/lotOfCloud_morning.svg'}
+                        width={50}
+                        height={50}
+                        alt=''
+                      /> : <Image
+                        src={'/images/lotOfCloud_night.svg'}
+                        width={50}
+                        height={50}
+                        alt=''
+                      />}
+                    </p>
+                  )
+                } else if (sky.fcstValue === "4") {
+                  return (
+                    <p key={idx}>
+                      <Image
+                        src={'/images/cloud.svg'}
+                        width={50}
+                        height={50}
+                        alt=''
+                      />
+                    </p>
+                  )
+                }
+            })}
 
-                {TMP_data.map((tmp, idx: number) => {
-                  if (tmp.fcstTime === item.time)
-                    return (
-                      <p key={idx} className='text-[14px]'>{tmp.fcstValue}℃</p>
-                    )
-                })}
-              </li>
-            )
-        })}
+            {TMP_data.map((tmp, idx: number) => {
+              if (tmp.fcstTime === time.fcstTime && tmp.fcstDate === time.fcstDate)
+                return (
+                  <p key={idx} className='text-[14px]'>{tmp.fcstValue}℃</p>
+                )
+            })}
 
-      </ul>
-    </React.Fragment>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

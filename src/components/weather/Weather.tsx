@@ -50,6 +50,7 @@ export default function Weather() {
             color: currentMenu === "weather" ? "white" : "#ccc"
           }}
         >날씨</p>
+
         <p
           className='text-left text-[16px] leading-9 h-9 rounded-t-xl py-1 px-3 cursor-pointer'
           onClick={() => setCurrentMenu("rainFall")}
