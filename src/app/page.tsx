@@ -1,7 +1,14 @@
-import Weather from '@/components/weather/Weather';
+import React from 'react';
 import dynamic from 'next/dynamic';
 
-const SearchBox = dynamic(() => import('@/components/search/SearchBox'), { ssr: false })
+// const SearchBox = dynamic(() => import('@/components/search/SearchBox'), { ssr: false })
+import SearchBox from '@/components/search/SearchBox'
+import Loading from '@/components/weather/common/Loading';
+const Weather = dynamic(() => import('@/components/weather/Weather'), {
+  ssr: false,
+  loading: () => <Loading />
+})
+
 
 
 export default function Home() {

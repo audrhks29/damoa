@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 
 import timeArray from '@/assets/weatherTimeList.json'
-
 import TimeSlot from "./common/button/TimeSlot";
-import { FaBeer } from "react-icons/fa";
-
-// import { IoWaterOutline } from "react-icons/io5";
 
 export default function RainFallInfo({ data, today, nowHour }: {
   data: WeatherDataType[];
@@ -33,7 +29,7 @@ export default function RainFallInfo({ data, today, nowHour }: {
             return (
               <li
                 key={index}
-                className='w-14 flex flex-col items-center rounded-2xl'
+                className='w-14 flex flex-col h-[96px] items-center rounded-2xl'
                 style={{ border: nowHour === item.time ? "1px solid #EA580C" : "" }}
               >
                 <p className='text-[12px]'>{item.text}</p>
@@ -61,16 +57,16 @@ export default function RainFallInfo({ data, today, nowHour }: {
                       return <p key={idx} className="text-[12px]">없음</p>
                     }
                     else if (pty.fcstValue === "1") {
-                      return <p key={idx}>비</p>
+                      return <p key={idx} className="text-[12px]">비</p>
                     }
                     else if (pty.fcstValue === "2") {
-                      return <p key={idx}>비/눈</p>
+                      return <p key={idx} className="text-[12px]">비/눈</p>
                     }
                     else if (pty.fcstValue === "3") {
-                      return <p key={idx}>눈</p>
+                      return <p key={idx} className="text-[12px]">눈</p>
                     }
                     else if (pty.fcstValue === "4") {
-                      return <p key={idx}>소나기</p>
+                      return <p key={idx} className="text-[12px]">소나기</p>
                     }
                 })}
 
@@ -78,7 +74,7 @@ export default function RainFallInfo({ data, today, nowHour }: {
                   if (pcp.fcstTime === item.time)
                     return (
                       <p key={idx} className="text-[12px]">
-                        {pcp.fcstValue === "강수없음" && "0mm"}
+                        {pcp.fcstValue === "강수없음" ? "0mm" : pcp.fcstValue}
                       </p>
                     )
                 })}

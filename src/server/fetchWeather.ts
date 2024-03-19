@@ -20,12 +20,21 @@ function getMyLocation(): Promise<Coordinates> {
 }
 
 async function getWeatherData(x: number, y: number): Promise<any> {
+  const today = new Date();
+
+  let yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+
+  const formattedYesterday = yesterday.getFullYear() +
+    ('0' + (yesterday.getMonth() + 1)).slice(-2) +
+    ('0' + yesterday.getDate()).slice(-2);
+
   const baseUrl = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
   const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
   try {
     const response = await axios.get(
-      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240318&base_time=0500&nx=${x}&ny=${y}`
+      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=${formattedYesterday}&base_time=0500&nx=${x}&ny=${y}`
     );
     return response.data.response.body.items.item
   } catch (error) {

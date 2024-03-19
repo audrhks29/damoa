@@ -1,12 +1,13 @@
 "use client"
-import fetchWeather from "@/server/fetchWeather"
-import { useQuery } from "@tanstack/react-query"
+
+import { useSuspenseQuery } from "@tanstack/react-query"
 
 import { useState } from "react";
 
 import WeatherInfo from "./WeatherInfo";
 import RainFallInfo from "./RainFallInfo";
 import TodayInfo from "./TodayInfo";
+import fetchWeather from "@/server/fetchWeather";
 
 export default function Weather() {
   const [currentMenu, setCurrentMenu] = useState<string>("weather");
@@ -21,12 +22,13 @@ export default function Weather() {
 
   const today = `${year}${month}${day}`;
 
-  const { data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ['weatherData'],
     queryFn: fetchWeather,
     staleTime: Infinity,
     gcTime: Infinity,
-    refetchOnMount: false
+    refetchOnMount: false,
+    retry: 0
   })
 
   return (
@@ -40,19 +42,21 @@ export default function Weather() {
 
       <div className="flex border-b border-orange-600">
         <p
-          className='text-left text-[20px] p-1 cursor-pointer'
+          className='text-left text-[16px] leading-9 h-9 rounded-t-xl py-1 px-3 cursor-pointer text-[white]'
           onClick={() => setCurrentMenu("weather")}
           style={{
+            backgroundColor: currentMenu === "weather" ? "#EA580C" : "",
             fontWeight: currentMenu === "weather" ? "bold" : "",
-            color: currentMenu === "weather" ? "#EA580C" : "#ccc"
+            color: currentMenu === "weather" ? "white" : "#ccc"
           }}
         >날씨</p>
         <p
-          className='text-left text-[20px] p-1 cursor-pointer'
+          className='text-left text-[16px] leading-9 h-9 rounded-t-xl py-1 px-3 cursor-pointer'
           onClick={() => setCurrentMenu("rainFall")}
           style={{
+            backgroundColor: currentMenu === "rainFall" ? "#EA580C" : "",
             fontWeight: currentMenu === "rainFall" ? "bold" : "",
-            color: currentMenu === "rainFall" ? "#EA580C" : "#ccc"
+            color: currentMenu === "rainFall" ? "white" : "#ccc"
           }}
         >강수</p>
       </div>

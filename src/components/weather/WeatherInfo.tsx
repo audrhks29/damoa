@@ -18,7 +18,6 @@ export default function WeatherInfo({ data, today, nowHour }: {
   // 하늘 상태
   const SKY_data = data.filter(item => item.category === "SKY" && item.fcstDate === today);
 
-
   return (
     <React.Fragment>
       <TimeSlot
@@ -32,7 +31,7 @@ export default function WeatherInfo({ data, today, nowHour }: {
             return (
               <li
                 key={index}
-                className='w-14 flex flex-col items-center rounded-2xl'
+                className='w-14 h-[96px] flex flex-col items-center justify-between rounded-2xl'
                 style={{ border: nowHour === item.time ? "1px solid #EA580C" : "" }}
               >
                 <p className='text-[12px]'>{item.text}</p>

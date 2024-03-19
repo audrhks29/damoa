@@ -40,7 +40,8 @@ export default function SearchBox(
     };
 
   return (
-    <div className='relative sm:w-4/5 md:w-3/5 xl:w-1/2 mt-6'
+    <div
+      className='relative sm:w-4/5 md:w-3/5 xl:w-1/2 mt-6'
       style={props.styleProp}
     >
       <Link href={'/'}>

@@ -12,8 +12,9 @@ import SearchBook from "@/components/search/searchTypes/SearchBook"
 import SearchCafe from "@/components/search/searchTypes/SearchCafe"
 import SearchImage from "@/components/search/searchTypes/SearchImage"
 import { useQuery } from "@tanstack/react-query"
-import fetchWeather from "@/server/fetchWeather"
+
 import SearchSide from "@/components/search/side/SearchSide"
+import fetchWeather from "@/server/fetchWeather"
 
 export default function SearchResult() {
   const params = useSearchParams()

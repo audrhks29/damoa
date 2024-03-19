@@ -6,7 +6,6 @@ import Providers from './../components/provider/Providers';
 
 import "./globals.css";
 import Loading from "./search/loading";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <Suspense fallback={<Loading />}>
         <body className={inter.className}>
-          <Providers> {children}</Providers>
+          <Providers>{children}</Providers>
         </body>
       </Suspense>
     </html>
