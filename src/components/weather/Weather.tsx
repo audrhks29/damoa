@@ -61,21 +61,21 @@ export default function Weather() {
           }}
         >강수</p>
       </div>
+      <div className="relative">
+        {data && currentMenu === "weather"
+          && <WeatherInfo
+            data={data}
+            today={today}
+            nowHour={nowHour}
+          />}
 
-      {data && currentMenu === "weather"
-        && <WeatherInfo
-          data={data}
-          today={today}
-          nowHour={nowHour}
-        />}
-
-      {data && currentMenu === "rainFall"
-        && <RainFallInfo
-          data={data}
-          today={today}
-          nowHour={nowHour}
-        />}
-
+        {data && currentMenu === "rainFall"
+          && <RainFallInfo
+            data={data}
+            today={today}
+            nowHour={nowHour}
+          />}
+      </div>
     </section>
   )
 }

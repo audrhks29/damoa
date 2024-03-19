@@ -7,10 +7,7 @@ export default function TodayInfo({ data, today, nowHour }: {
 }) {
   // 현재 기온
   const TMP_data = data.find(item => item.category === "TMP" && item.fcstDate === today && item.fcstTime === nowHour);
-  // 일 최저기온
-  const TMN_data = data.find(item => item.category === "TMN" && item.fcstDate === today);
-  // 일 최고기온
-  const TMX_data = data.find(item => item.category === "TMX" && item.fcstDate === today);
+
   // 현재 하늘 상태
   const SKY_data = data.find(item => item.category === "SKY" && item.fcstDate === today && item.fcstTime === nowHour);
 
@@ -43,19 +40,6 @@ export default function TodayInfo({ data, today, nowHour }: {
 
         <p className='text-[50px] ml-2'>{TMP_data?.fcstValue}℃</p>
       </div>
-
-      <div className="flex justify-center">
-        <div className="flex mr-4">
-          <b className="mr-2">최저</b>
-          <p>{TMN_data?.fcstValue}℃</p>
-        </div>
-
-        <div className="flex">
-          <b className="mr-2">최고</b>
-          <p>{TMX_data?.fcstValue}℃</p>
-        </div>
-      </div>
-
     </div>
   )
 }

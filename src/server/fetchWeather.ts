@@ -20,27 +20,51 @@ function getMyLocation(): Promise<Coordinates> {
 }
 
 async function getWeatherData(x: number, y: number): Promise<any> {
-  // const today = new Date();
-
-  // let yesterday = new Date(today);
-  // yesterday.setDate(today.getDate() - 1);
-
-  // const formattedYesterday = yesterday.getFullYear() +
-  //   ('0' + (yesterday.getMonth() + 1)).slice(-2) +
-  //   ('0' + yesterday.getDate()).slice(-2);
-
-  const baseUrl = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
-  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-
   try {
+    const date = new Date();
+    let year = date.getFullYear();
+    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+    const hour = date.getHours().toString().padStart(2, '0');
+    const minute = date.getMinutes().toString().padStart(2, '0');
+    const currentTime = parseInt(`${hour}${minute}`);
+
+    const apiTimes = ['0210', '0510', '0810', '1110', '1410', '1710', '2010', '2310'];
+    let baseTime = '';
+
+    for (let i = apiTimes.length - 1; i >= 0; i--) {
+      if (parseInt(apiTimes[i]) <= currentTime) {
+        baseTime = apiTimes[i];
+        break;
+      }
+    }
+
+    if (!baseTime) {
+      // 이미 지나간 시간이므로 다음 날의 첫 번째 시간 선택
+      const tomorrow = new Date(date);
+      tomorrow.setDate(date.getDate() + 1);
+      const nextDay = tomorrow.getDate().toString().padStart(2, '0');
+      baseTime = apiTimes[0];
+      month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
+      year = tomorrow.getFullYear();
+      day = nextDay;
+    }
+
+    const today = `${year}${month}${day}`;
+    const baseUrl = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
+    const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
+
     const response = await axios.get(
-      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240319&base_time=1400&nx=${x}&ny=${y}`
+      `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=${today}&base_time=${baseTime}&nx=${x}&ny=${y}`
     );
-    return response.data.response.body.items.item
+
+    return response.data.response.body.items.item;
   } catch (error) {
     console.error('Error fetching search results:', error);
+    throw error;
   }
 }
+
 
 function convertMyLocation(latitude: number, longitude: number) {
   var RE = 6371.00877; // 지구 반경(km)
