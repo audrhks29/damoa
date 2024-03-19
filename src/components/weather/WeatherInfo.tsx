@@ -7,7 +7,6 @@ export default function WeatherInfo({ data, today, nowHour }: {
   today: string;
   nowHour: string;
 }) {
-
   // 1시간 기온
   const TMP_data = data.filter(item => item.category === "TMP");
 
@@ -54,7 +53,7 @@ export default function WeatherInfo({ data, today, nowHour }: {
                   if (sky.fcstValue === "1") {
                     return (
                       <p key={idx}>
-                        {index > 5 && index < 18 ? <Image
+                        {parseInt(sky.fcstTime) > 500 && parseInt(sky.fcstTime) <= 1800 ? <Image
                           src={'/images/morning.svg'}
                           width={50}
                           height={50}
@@ -70,7 +69,7 @@ export default function WeatherInfo({ data, today, nowHour }: {
                   } else if (sky.fcstValue === "3") {
                     return (
                       <p key={idx}>
-                        {index > 5 && index < 18 ? <Image
+                        {parseInt(sky.fcstTime) > 500 && parseInt(sky.fcstTime) <= 1800 ? <Image
                           src={'/images/lotOfCloud_morning.svg'}
                           width={50}
                           height={50}
