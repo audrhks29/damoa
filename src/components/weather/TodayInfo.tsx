@@ -6,7 +6,6 @@ export default function TodayInfo({ data, today, nowHour }: {
   nowHour: string;
 }) {
   // 현재 기온
-  console.log(parseInt(nowHour));
   const TMP_data = data.find(item => item.category === "TMP" && item.fcstDate === today && item.fcstTime === nowHour);
 
   // 현재 하늘 상태
