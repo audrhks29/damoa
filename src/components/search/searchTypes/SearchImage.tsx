@@ -31,7 +31,7 @@ export default function SearchImage() {
   return (
     <React.Fragment>
       {data && data[0].length > 0
-        && <div className="w-[1200px] px-3 py-4 rounded-2xl border shadow columns-4 md:columns-4 lg:columns-4">
+        && <div className="sm:w-full lg:w-full xl:w-[1200px] px-3 py-4 rounded-2xl border shadow sm:columns-2 lg:columns-3 xl:columns-4">
           <div className="px-1 grid auto-rows-[10px] gap-[1px]">
             {data?.map(item => (
               item.map((result: SearchImageType, index: number) => {
@@ -48,18 +48,12 @@ export default function SearchImage() {
               })))
             }
           </div>
-        </div>}
+        </div>
 
-      {hasNextPage
-        && <MoreButton
-          fetchNextPage={fetchNextPage}
-          style={{ width: "1200px" }}
-        />}
-      {data && data[0].length > 0 && !hasNextPage
-        && <EndData style={{ width: "1200px" }} />}
-      {data && data[0].length === 0 && !hasNextPage
-        && <NoSearchData style={{ width: "1200px" }} />}
-
+      }
+      {hasNextPage && <MoreButton fetchNextPage={fetchNextPage} />}
+      {data && data[0].length > 0 && !hasNextPage && <EndData />}
+      {data && data[0].length === 0 && !hasNextPage && <NoSearchData />}
     </React.Fragment>
   )
 }

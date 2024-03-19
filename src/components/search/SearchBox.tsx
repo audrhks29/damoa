@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -40,7 +40,7 @@ export default function SearchBox(
     };
 
   return (
-    <div className='relative sm:w-[400px] md:w-[500px] lg:w-[500px] mt-6'
+    <div className='relative sm:w-4/5 md:w-3/5 xl:w-1/2 mt-6'
       style={props.styleProp}
     >
       <Link href={'/'}>
@@ -49,19 +49,29 @@ export default function SearchBox(
           height='50'
           alt=''
           src='/logo.png'
-          className='absolute top-0 -left-16'
+          className='absolute top-0 -left-16 sm:left-0 min-[1350px]:-left-16'
           priority={true}
         />}
       </Link>
 
-      <input
+      {typeParams && queryParams && <input
         type="text"
         value={query}
         onChange={handleChange}
         onKeyDown={handleEnterAtInput}
         placeholder="검색어를 입력하세요"
-        className='sm:w-[400px] md:w-[500px] lg:w-[500px] h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
-      />
+        className='w-full h-[50px] pl-14 min-[1350px]:pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
+      />}
+
+      {/* 메인화면 input */}
+      {!typeParams && !queryParams && <input
+        type="text"
+        value={query}
+        onChange={handleChange}
+        onKeyDown={handleEnterAtInput}
+        placeholder="검색어를 입력하세요"
+        className='w-full h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
+      />}
 
       <button
         onClick={() => handleSearch(query)}

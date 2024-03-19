@@ -31,7 +31,7 @@ export default function SearchImageAll_Image(props: {
             sizes="270px"
             quality={50}
             priority={true}
-            className='object-cover hover:scale-105 transition-all'
+            className='object-cover hover:scale-105 transition-all sm:w-56 md:w-full'
             onError={() => setImageUrl(false)}
           />
         </div>

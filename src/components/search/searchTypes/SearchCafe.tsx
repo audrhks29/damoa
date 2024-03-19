@@ -30,22 +30,15 @@ export default function SearchCafe() {
 
   return (
     <React.Fragment>
-      <ul className="w-[800px]">
+      <ul className="search_result_box">
         {data?.map((item, index) => (
           <CafeContents key={index} data={item} />
         ))}
+
+        {hasNextPage && <MoreButton fetchNextPage={fetchNextPage} />}
+        {data && data[0].length > 0 && !hasNextPage && <EndData />}
+        {data && data[0].length === 0 && !hasNextPage && <NoSearchData />}
       </ul>
-
-      {hasNextPage
-        && <MoreButton
-          fetchNextPage={fetchNextPage}
-          style={{ width: "800px" }}
-        />}
-      {data && data[0].length > 0 && !hasNextPage
-        && <EndData style={{ width: "800px" }} />}
-      {data && data[0].length === 0 && !hasNextPage
-        && <NoSearchData style={{ width: "800px" }} />}
-
     </React.Fragment>
   )
 }

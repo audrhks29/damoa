@@ -29,6 +29,10 @@ const config: Config = {
         "section h2": {
           "@apply mb-2":
             ""
+        },
+        ".search_result_box": {
+          "@apply md:w-full lg:w-[700px] xl:w-[750px] 2xl:w-[850px]":
+            ""
         }
       })
     }

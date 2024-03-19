@@ -60,7 +60,7 @@ export default function SearchAll() {
   })
 
   return (
-    <div className="w-[800px]">
+    <div className="search_result_box">
       {webAllData && webAllData.length > 0 && <SearchAllWeb data={webAllData} />}
       {vclipAllData && vclipAllData.length > 0 && <SearchAllVclip data={vclipAllData} />}
       {imageAllData && imageAllData.length > 0 && <SearchAllImage data={imageAllData} />}
@@ -75,7 +75,7 @@ export default function SearchAll() {
         && blogAllData && blogAllData.length === 0
         && bookAllData && bookAllData.length === 0
         && cafeAllData && cafeAllData.length === 0
-        && <NoSearchData style={{ width: "800px" }} />
+        && <NoSearchData />
       }
     </div>
   )

@@ -32,7 +32,7 @@ export default function SearchResult() {
   const day = date.getDate();
 
   const hour = date.getHours()
-  const nowHour = `${hour}00`
+  const nowHour = hour < 10 ? `0${hour}00` : `${hour}00`
 
   const today = `${year}${month}${day}`;
 
