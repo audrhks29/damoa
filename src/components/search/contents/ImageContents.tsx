@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function ImageContents({ data }: { data: SearchImageType[] }) {
   return (
-    <ul className="w-[800px] flex justify-between px-3 py-4 rounded-2xl border shadow">
+    <ul className="search_result_box flex justify-between px-3 py-4 rounded-2xl border shadow">
       {data.map((result: SearchImageType, index: number) => {
 
         return (
@@ -11,7 +11,7 @@ export default function ImageContents({ data }: { data: SearchImageType[] }) {
             <div className='overflow-hidden rounded-3xl cursor-pointer'>
               <Link href={result.doc_url} target="_blank">
                 {result.thumbnail_url !== "" && <Image
-                  className='hover:scale-105 transition-all'
+                  className='hover:scale-105 transition-all sm:w-28 md:w-36 lg:w-44 xl:w-[180px]'
                   src={result.thumbnail_url}
                   width={180}
                   height={180}

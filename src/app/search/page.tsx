@@ -16,7 +16,7 @@ import { useQuery } from "@tanstack/react-query"
 import SearchSide from "@/components/search/side/SearchSide"
 import fetchWeather from "@/server/fetchWeather"
 
-export default function SearchResult() {
+export default function SearchPage() {
   const params = useSearchParams()
 
   const { data } = useQuery({
