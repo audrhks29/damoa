@@ -75,7 +75,7 @@ export default function WeatherInfo({ data, today, nowHour }: {
                           height={50}
                           alt=''
                         /> : <Image
-                          src={'/images/lotOfCloud_night.svg'}
+                          src={'/images/lotOfCloud_evening.svg'}
                           width={50}
                           height={50}
                           alt=''

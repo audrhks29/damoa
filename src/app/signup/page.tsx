@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 
-const SignUpForm = dynamic(() => import("@/components/user/signUp/SignUpForm"), {
+const SignUpForm = dynamic(() => import("@/components/signUp/SignUpForm"), {
   ssr: false
 })
 

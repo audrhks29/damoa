@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation"
 
 import SearchBox from "@/components/search/SearchBox"
-import TypeSection from "@/components/TypeSection"
+import TypeSection from "@/components/search/TypeSection"
 import SearchAll from "@/components/search/all/SearchAll"
 import SearchWeb from "@/components/search/searchTypes/SearchWeb"
 import SearchVclip from "@/components/search/searchTypes/SearchVclip"

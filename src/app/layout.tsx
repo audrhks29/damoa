@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Loading from "./search/loading";
 import Providers from "@/provider/Providers";
+import Header from "./Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <Suspense fallback={<Loading />}>
         <body className={inter.className}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
         </body>
       </Suspense>
     </html>

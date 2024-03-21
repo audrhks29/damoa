@@ -2,6 +2,7 @@
 
 import { authService } from "@/firebase/firebaseInstance";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -44,12 +45,16 @@ export default function LoginForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="w-[300px] h-10 rounded-2xl bg-orange-600 text-white hover:bg-orange-400"
-      >
-        로그인
-      </button>
+      <div>
+        <button className="w-[130px] h-10 rounded-2xl hover:text-white hover:bg-orange-400 mr-5">
+          <Link href={'/signup'} className="block">회원가입</Link>
+        </button>
+
+        <button
+          type="submit"
+          className="w-[130px] h-10 rounded-2xl bg-orange-600 text-white hover:bg-orange-400"
+        >로그인</button>
+      </div>
     </form>
   )
 }

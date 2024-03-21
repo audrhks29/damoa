@@ -53,6 +53,9 @@ async function getWeatherData(x: number, y: number): Promise<any> {
     else if (currentTime < 2310) {
       baseTime = "1700"
     }
+    else if (currentTime > 2310) {
+      baseTime = "2000"
+    }
 
     let year = date.getFullYear();
     let month = (date.getMonth() + 1).toString().padStart(2, '0');
