@@ -1,11 +1,7 @@
 "use client"
-
-const SearchBox = dynamic(() => import('@/components/search/SearchBox'), {
-  ssr: false
-})
-
 import NavigationBar from "@/components/header/NavigationBar";
-import dynamic from "next/dynamic";
+import SearchBox from "@/components/search/SearchBox";
+
 import { useSearchParams } from "next/navigation";
 
 export default function Header() {

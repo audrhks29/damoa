@@ -3,7 +3,6 @@ import { MouseEventHandler } from "react";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import Weather from "../weather/Weather";
 
-
 const TodayInfo = dynamic(() => import('@/components/weather/TodayInfo'), {
   ssr: false,
   loading: () => <div>날씨 데이터를 로딩중입니다.</div>

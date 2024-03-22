@@ -5,7 +5,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Loading from "./search/loading";
 import Providers from "@/provider/Providers";
-import Header from "./Header";
+
+import dynamic from "next/dynamic";
+
+const Header = dynamic(() => import('./Header'), {
+  ssr: false
+})
 
 const inter = Inter({ subsets: ["latin"] });
 
