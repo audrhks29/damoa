@@ -1,8 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-import Loading from '@/components/weather/common/Loading';
-
 const SearchBox = dynamic(() => import('@/components/search/SearchBox'), {
   ssr: false
 })
