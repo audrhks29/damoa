@@ -2,7 +2,6 @@
 
 import { useSearchParams } from "next/navigation"
 
-import SearchBox from "@/components/search/SearchBox"
 import TypeSection from "@/components/search/TypeSection"
 import SearchAll from "@/components/search/all/SearchAll"
 import SearchWeb from "@/components/search/searchTypes/SearchWeb"
@@ -11,21 +10,12 @@ import SearchBlog from "@/components/search/searchTypes/SearchBlog"
 import SearchBook from "@/components/search/searchTypes/SearchBook"
 import SearchCafe from "@/components/search/searchTypes/SearchCafe"
 import SearchImage from "@/components/search/searchTypes/SearchImage"
-import { useQuery } from "@tanstack/react-query"
 
 import SearchSide from "@/components/search/side/SearchSide"
-import fetchWeather from "@/server/fetchWeather"
 
 export default function SearchPage() {
   const params = useSearchParams()
-
-  const { data } = useQuery({
-    queryKey: ['weatherData'],
-    queryFn: fetchWeather,
-    staleTime: Infinity,
-    gcTime: Infinity,
-    refetchOnMount: false
-  })
+  const typeParams = params.get('type');
 
   const date = new Date();
   const year = date.getFullYear();
@@ -37,14 +27,9 @@ export default function SearchPage() {
 
   const today = `${year}${month}${day}`;
 
-  const typeParams = params.get('type');
-
   return (
 
     <main className="inner pb-6 relative">
-      <SearchBox
-        styleProp={{ marginRight: 'auto' }} />
-
       <TypeSection />
 
       {typeParams === "all" && <SearchAll />}
@@ -55,10 +40,11 @@ export default function SearchPage() {
       {typeParams === "book" && <SearchBook />}
       {typeParams === "cafe" && <SearchCafe />}
 
-      {data && typeParams !== "image" && <SearchSide
-        data={data}
+      {typeParams !== "image" && <SearchSide
         today={today}
         nowHour={nowHour}
+        imageSize={100}
+        fontSize={"50px"}
       />}
 
     </main>

@@ -32,12 +32,13 @@ export default function Weather() {
   })
 
   return (
-    <section className="sm:w-4/5 md:w-4/6 xl:w-3/4 border border-orange-600 p-6 rounded-3xl text-center">
+    <section className="absolute right-0 w-[500px] z-10 border shadow-lg p-6 rounded-3xl text-center bg-white">
       <p className="text-right text-[14px] text-[#ccc]">현재 위치 기준</p>
       {data && <TodayInfo
-        data={data}
         today={today}
         nowHour={nowHour}
+        imageSize={100}
+        fontSize={"50px"}
       />}
 
       <div className="flex border-b border-orange-600">
@@ -61,6 +62,7 @@ export default function Weather() {
           }}
         >강수</p>
       </div>
+
       <div className="relative">
         {data && currentMenu === "weather"
           && <WeatherInfo

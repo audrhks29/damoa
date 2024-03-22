@@ -26,7 +26,7 @@ export default function BlogContents({ data }: { data: SearchBlogType[] }) {
                   quality={100} />}
               <div className="w-[600px] ml-4 flex flex-col justify-between">
                 <p
-                  className='mb-2 hover:underline text-orange-600'
+                  className='mb-2 hover:underline text-linkPrimary'
                   dangerouslySetInnerHTML={{ __html: result.title }}></p>
                 <p
                   className='text-sm'

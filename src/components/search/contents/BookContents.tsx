@@ -24,7 +24,7 @@ export default function BookContents({ data }: { data: SearchBookType[] }) {
                 />}
 
               <div className='text-sm flex flex-col justify-between ml-4'>
-                <p className='mb-2 text-base hover:underline text-orange-600'>{result.title}</p>
+                <p className='mb-2 text-base hover:underline text-linkPrimary'>{result.title}</p>
                 <div>
                   <p>
                     <span className="text-[#888]">저자&nbsp;&nbsp;</span>

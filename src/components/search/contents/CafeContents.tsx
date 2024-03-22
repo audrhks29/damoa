@@ -27,7 +27,7 @@ export default function CafeContents({ data }: { data: SearchCafeType[] }) {
                 />}
               <div className="w-[600px] ml-4">
                 <p
-                  className='mb-2 hover:underline text-orange-600'
+                  className='search_result_p'
                   dangerouslySetInnerHTML={{ __html: result.title }}></p>
                 <p
                   className='text-sm'

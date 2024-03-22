@@ -16,6 +16,7 @@ export default function LoggedIn(props: {
       deleteUserInfo()
     }
   };
+  console.log(userInfo);
 
   return (
     <React.Fragment>
@@ -23,11 +24,12 @@ export default function LoggedIn(props: {
         className="bg-orange-600 text-center text-white p-1 cursor-pointer hover:bg-orange-500 block"
         onClick={props.handleUserPopup}
       >
-        <span className="text-[14px]">로그인됌</span>
+        <span className="text-[14px]">{userInfo.displayName}</span>
       </div>
 
       {props.userPopup &&
-        <div className="border absolute right-0 w-72 p-5 text-center rounded-3xl shadow-lg bg-white">
+        <div className="border absolute z-10 right-0 w-72 p-5 text-center rounded-3xl shadow-lg bg-white">
+          <h3 className="mb-3">{userInfo.displayName}</h3>
           <h3 className="mb-3">{userInfo.email}</h3>
           <ul>
             <li className="flex h-10 justify-between leading-10">

@@ -7,21 +7,12 @@ const SearchBox = dynamic(() => import('@/components/search/SearchBox'), {
   ssr: false
 })
 
-const Weather = dynamic(() => import('@/components/weather/Weather'), {
-  ssr: false,
-  loading: () => <Loading />
-})
-
 export default function Home() {
   return (
     <main className="inner">
-      <div className="text-center text-6xl mt-40">DAMOA</div>
-
+      <div className="text-center text-6xl mt-40 text-orange-600">DAMOA</div>
       <SearchBox
         styleProp={{ margin: "auto", marginTop: "20px" }} />
-      <div className="flex sm:justify-center lg:justify-between mt-6 w-full items-start">
-        {/* <Weather /> */}
-      </div>
     </main>
   );
 }

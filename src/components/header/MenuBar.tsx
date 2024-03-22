@@ -7,26 +7,25 @@ export default function MenuBar(props: {
   handleMenuPopup: MouseEventHandler<HTMLDivElement>
 }) {
 
-
   return (
     <div className="relative">
       <div
-        className="text-[30px] cursor-pointer text-orange-500 mr-3"
+        className="text-[30px] cursor-pointer text-orange-600 mr-3"
         onClick={props.handleMenuPopup}
       >
         <i><CgMenuGridR /></i>
       </div>
       {props.menuPopup
-        && <div className="border absolute right-0 w-72 p-5 text-center rounded-3xl shadow-lg bg-white">
+        && <div className="border absolute z-10 right-0 w-72 p-5 text-center rounded-3xl shadow-lg bg-white">
           <h3 className="mb-3"></h3>
-          <ul>
-            <li className="flex h-10 justify-between leading-10">
+          <ul className="text-left">
+            <li className="h-10 leading-10 cursor-pointer hover:text-orange-600">
               캘린더
             </li>
-            <li className="flex h-10 justify-between leading-10">
+            <li className="h-10 leading-10 cursor-pointer hover:text-orange-600">
               메모
             </li>
-            <li className="flex h-10 justify-between leading-10">
+            <li className=" h-10 leading-10 cursor-pointer hover:text-orange-600">
               주식
             </li>
           </ul>

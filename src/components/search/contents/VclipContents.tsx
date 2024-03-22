@@ -22,9 +22,9 @@ export default function VclipContents({ data }: { data: SearchVclipType[] }) {
                   alt={result.title}
                   quality={100} />}
 
-              <div className="w-[600px] ml-4 whitespace-nowrap flex flex-col justify-between">
+              <div className="search_result_div ml-4 flex flex-col justify-between">
                 <p
-                  className='overflow-hidden text-ellipsis mb-2 hover:underline text-orange-600'
+                  className='search_result_p'
                   dangerouslySetInnerHTML={{ __html: result.title }}></p>
                 <p className="text-sm">{result.author}</p>
                 <p className="text-[#888] text-xs">{result.datetime}</p>

@@ -30,7 +30,7 @@ export default function LoginForm() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border border-[#999] w-[300px] h-10 indent-3 focus:border-orange-600 focus:outline-none"
+          className="sign_input"
           placeholder="이메일"
           required
         />
@@ -39,7 +39,7 @@ export default function LoginForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border border-[#999] w-[300px] h-10 indent-3 focus:border-orange-600 focus:outline-none"
+          className="sign_input"
           placeholder="패스워드"
           required
         />

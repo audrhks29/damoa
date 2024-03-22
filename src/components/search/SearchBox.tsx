@@ -20,6 +20,10 @@ export default function SearchBox(
 
   // search button click
   const handleSearch = (query: string) => {
+    if (query === "") {
+      alert("검색어를 입력하세요")
+      return
+    }
     if (typeParams === "all" || !typeParams) {
       router.push(`/search?type=all&query=${query}`);
     } else {
@@ -41,7 +45,7 @@ export default function SearchBox(
 
   return (
     <div
-      className='relative sm:w-4/5 md:w-3/5 xl:w-1/2 mt-6'
+      className='relative sm:w-4/5 md:w-3/5 xl:w-1/2 flex items-center'
       style={props.styleProp}
     >
       <Link href={'/'}>
@@ -50,8 +54,8 @@ export default function SearchBox(
           height='50'
           alt=''
           src='/logo.png'
-          className='absolute top-0 -left-16 sm:left-0 min-[1350px]:-left-16'
           priority={true}
+          className='mr-6'
         />}
       </Link>
 
@@ -61,7 +65,7 @@ export default function SearchBox(
         onChange={handleChange}
         onKeyDown={handleEnterAtInput}
         placeholder="검색어를 입력하세요"
-        className='w-full h-[50px] pl-14 min-[1350px]:pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
+        className='w-full h-[50px] pl-6 min-[1350px]:pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-linkPrimary focus:outline-none'
       />}
 
       {/* 메인화면 input */}
@@ -71,7 +75,7 @@ export default function SearchBox(
         onChange={handleChange}
         onKeyDown={handleEnterAtInput}
         placeholder="검색어를 입력하세요"
-        className='w-full h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-blue-500 focus:outline-none'
+        className='w-full h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-linkPrimary focus:outline-none'
       />}
 
       <button

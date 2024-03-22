@@ -1,44 +1,28 @@
 "use client"
 
-import Login from "@/components/header/Login";
-import MenuBar from "@/components/header/MenuBar";
-// import WeatherSummary from "@/components/header/WeatherSummary";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-
-
-const WeatherSummary = dynamic(() => import('@/components/header/WeatherSummary'), {
-  ssr: false,
-  loading: () => <div>날씨 데이터를 로딩중입니다.</div>
-})
+import SearchBox from "@/components/search/SearchBox"
+import NavigationBar from "@/components/header/NavigationBar";
+import { useSearchParams } from "next/navigation";
 
 export default function Header() {
-  const [menuPopup, setMenuPopup] = useState(false);
-  const [userPopup, setUserPopup] = useState(false);
+  const params = useSearchParams();
 
-  const handleMenuPopup = () => {
-    setMenuPopup(!menuPopup)
-    setUserPopup(false)
-  }
-
-  const handleUserPopup = () => {
-    setUserPopup(!userPopup)
-    setMenuPopup(false)
-  }
+  const typeParams = params.get('type');
+  const queryParams = params.get('query');
 
   return (
-    <header>
-      <nav className="h-12 flex items-center justify-end">
-        <WeatherSummary />
-        <MenuBar
-          menuPopup={menuPopup}
-          handleMenuPopup={handleMenuPopup}
-        />
-        <Login
-          userPopup={userPopup}
-          handleUserPopup={handleUserPopup}
-        />
-      </nav>
+    <header
+      className="h-[90px] justify-between"
+      style={{
+        display: typeParams && queryParams ? "flex" : "",
+        alignItems: typeParams && queryParams ? "center" : ""
+      }}
+    >
+
+      {typeParams && queryParams && <SearchBox
+        styleProp={{ marginLeft: '5%' }}
+      />}
+      <NavigationBar />
     </header>
   )
 }

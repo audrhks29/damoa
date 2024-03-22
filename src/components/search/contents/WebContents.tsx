@@ -12,7 +12,7 @@ export default function WebContents({ data }: { data: SearchWebType[] }) {
           <Link href={result.url} target='_blank'>
             <p className='text-xs mb-3'>{`${url[0]}//${url[2]}`}</p>
             <p
-              className='mb-2 hover:underline text-orange-600'
+              className='search_result_p'
               dangerouslySetInnerHTML={{ __html: result.title }}></p>
             <p className='text-sm' dangerouslySetInnerHTML={{ __html: result.contents }}></p>
           </Link>
