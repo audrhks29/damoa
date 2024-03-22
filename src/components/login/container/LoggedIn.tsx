@@ -16,7 +16,7 @@ export default function LoggedIn(props: {
       deleteUserInfo()
     }
   };
-  console.log(userInfo);
+
 
   return (
     <React.Fragment>
