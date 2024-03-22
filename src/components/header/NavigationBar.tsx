@@ -28,6 +28,11 @@ export default function NavigationBar() {
     setMenuPopup(false)
     setUserPopup(!userPopup)
   }
+  const handleAllPopupFalse = () => {
+    setWeatherPopup(false)
+    setMenuPopup(false)
+    setUserPopup(false)
+  }
 
   return (
     <nav className="flex items-center justify-end h-[90px]">
@@ -38,6 +43,7 @@ export default function NavigationBar() {
       <MenuBar
         menuPopup={menuPopup}
         handleMenuPopup={handleMenuPopup}
+        handleAllPopupFalse={handleAllPopupFalse}
       />
       <Login
         userPopup={userPopup}
