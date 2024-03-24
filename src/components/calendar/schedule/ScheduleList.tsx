@@ -41,7 +41,7 @@ export default function ScheduleList(props: PropsType) {
           />
           : <p className="w-[220px] px-3">{todo}</p>}
 
-        <p className="px-3 text-[14px]">오전 00시 00분 <br />~ 오전 00시 00분</p>
+        <p className="px-3 text-[14px]">00시 00분 <br />~ 00시 00분</p>
       </div>
 
       {isEdit
