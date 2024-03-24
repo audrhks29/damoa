@@ -23,12 +23,12 @@ export default function MenuBar(props: {
           <h3 className="mb-3"></h3>
           <ul className="text-left">
             <li className="h-10 leading-10 cursor-pointer hover:text-orange-600">
-              {/* <Link
+              <Link
                 href='/calendar'
                 className="block"
                 onClick={props.handleAllPopupFalse}
-              >캘린더</Link> */}
-              캘린더
+              >캘린더</Link>
+              {/* 캘린더 */}
             </li>
             <li className="h-10 leading-10 cursor-pointer hover:text-orange-600">
               메모

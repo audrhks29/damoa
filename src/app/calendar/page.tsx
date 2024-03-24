@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 
-// const Calendar =dynamic(()=>import ("@/components/calendar/Calendar"))
 const Calendar = dynamic(() => import('@/components/calendar/Calendar'), {
   ssr: false
 })
+
 export default function CalendarPage() {
   return (
     <div>

@@ -1,8 +1,6 @@
 "use client"
 
-import { authService } from "@/firebase/firebaseInstance";
 import React, { MouseEventHandler, useEffect } from "react";
-
 
 import NotLoggedIn from "../login/container/NotLoggedIn";
 import LoggedIn from "../login/container/LoggedIn";
@@ -15,9 +13,7 @@ export default function Login(props: {
   const { userInfo, getUserInfo } = useUserStore()
 
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) getUserInfo(user)
-    });
+    getUserInfo()
   }, [getUserInfo]);
 
   return (
