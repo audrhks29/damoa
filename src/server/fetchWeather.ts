@@ -67,9 +67,11 @@ async function getWeatherData(x: number, y: number): Promise<any> {
     const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
     const response = await axios.get(
-      // `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=20240319&base_time=2300&nx=${x}&ny=${y}`
       `${baseUrl}?serviceKey=${API_KEY}&numOfRows=1000&dataType=JSON&pageNo=1&base_date=${today}&base_time=${baseTime}&nx=${x}&ny=${y}`
     );
+    // console.log(today);
+    // console.log(baseTime);
+    // console.log(response);
     return response.data.response.body.items.item;
   } catch (error) {
     console.error('Error fetching search results:', error);
