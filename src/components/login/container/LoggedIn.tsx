@@ -1,10 +1,12 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { authService } from "@/firebase/firebaseInstance";
 import useUserStore from "@/store/user-store"
 import React, { MouseEventHandler } from "react";
 
 export default function LoggedIn(props: {
   userPopup: boolean;
-  handleUserPopup: MouseEventHandler<HTMLDivElement>
+  handleUserPopup: MouseEventHandler<HTMLButtonElement>
 }) {
 
   const { userInfo, deleteUserInfo } = useUserStore();
@@ -17,29 +19,30 @@ export default function LoggedIn(props: {
     }
   };
 
-
   return (
     <React.Fragment>
-      <div
-        className="bg-orange-600 text-center text-white p-1 cursor-pointer hover:bg-orange-500 block"
-        onClick={props.handleUserPopup}
-      >
+      <Button onClick={props.handleUserPopup}>
         <span className="text-[14px]">{userInfo.displayName}</span>
-      </div>
+      </Button>
 
       {props.userPopup &&
-        <div className="border absolute z-10 right-0 w-72 p-5 text-center rounded-3xl shadow-lg bg-white">
-          <h3 className="mb-3">{userInfo.displayName}</h3>
-          <h3 className="mb-3">{userInfo.email}</h3>
-          <ul>
-            <li className="flex h-10 justify-between leading-10">
-              <div className="w-[120px] rounded-l-2xl border cursor-pointer hover:bg-orange-500 hover:text-white">계정설정</div>
-              <div
-                className="w-[120px] rounded-r-2xl border cursor-pointer hover:bg-orange-500 hover:text-white"
-                onClick={logoutFB}>로그아웃</div>
-            </li>
-          </ul>
-        </div>}
+        <Card className="absolute z-10 right-0 mt-3 w-72 p-5 text-center">
+          <CardHeader>
+            <CardTitle>{userInfo.displayName}</CardTitle>
+            <CardDescription>{userInfo.email}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul>
+              <li className="flex h-10 justify-between leading-10">
+                <div className="w-[120px] rounded-l-2xl border cursor-pointer hover:bg-primary hover:text-white">계정설정</div>
+                <div
+                  className="w-[120px] rounded-r-2xl border cursor-pointer hover:bg-primary hover:text-white"
+                  onClick={logoutFB}>로그아웃</div>
+              </li>
+            </ul>
+          </CardContent>
+        </Card>}
+
     </React.Fragment>
   )
 }

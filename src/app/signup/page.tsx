@@ -1,17 +1,19 @@
-import Link from "next/link"
-
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SignUpForm from "@/components/signUp/SignUpForm"
 
 
 export default function SignUpPage() {
   return (
     <main className="inner text-center">
-      <div className="w-[500px] m-auto mt-14 p-24 rounded-2xl shadow-xl">
-        <Link href='/'>
-          <h2 className="text-[50px] text-orange-600 mb-7">DAMOA</h2>
-        </Link>
-        <SignUpForm />
-      </div>
+      <Card className="w-[500px] m-auto mt-14 p-24">
+        <CardHeader>
+          <CardTitle>DAMOA</CardTitle>
+          <CardDescription>DAMOA 계정 회원가입</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <SignUpForm />
+        </CardContent>
+      </Card>
     </main>
   )
 }

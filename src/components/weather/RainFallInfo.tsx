@@ -40,7 +40,7 @@ export default function RainFallInfo({ data, today, nowHour }: {
               key={index}
               className='w-[60px] p-1 flex-shrink-0 rounded-2xl h-[106px]'
               style={{
-                border: nowHour === time.fcstTime && today === time.fcstDate ? "1px solid #EA580C" : "",
+                border: nowHour === time.fcstTime && today === time.fcstDate ? "1px solid #0f172a" : "",
                 display: isDisplay ? "block" : "none"
               }}
             >

@@ -2,9 +2,13 @@
 
 import { authService } from "@/firebase/firebaseInstance";
 import { signInWithEmailAndPassword } from "firebase/auth";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -13,7 +17,7 @@ export default function LoginForm() {
   const router = useRouter()
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     let data;
     try {
       data = await signInWithEmailAndPassword(authService, email, password)
@@ -25,35 +29,32 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="flex flex-col items-center py-5">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="sign_input"
-          placeholder="이메일"
-          required
-        />
+      <Label htmlFor="email">Email</Label>
+      <Input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="이메일"
+        required
+        className="mb-3"
+      />
 
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="sign_input"
-          placeholder="패스워드"
-          required
-          autoComplete="off"
-        />
-      </div>
+      <Label htmlFor="password">Password</Label>
+      <Input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="패스워드"
+        required
+        autoComplete="off"
+        className="mb-3"
+      />
 
-      <div>
-        <Link href={'/signup'}
-          className="w-[130px] h-10 rounded-2xl hover:text-white hover:bg-orange-400 mr-5 block">
-          회원가입</Link>
-        <button
-          type="submit"
-          className="w-[130px] h-10 rounded-2xl bg-orange-600 text-white hover:bg-orange-400"
-        >로그인</button>
+      <div className="flex mt-5 justify-center">
+        <Button asChild className="mr-5">
+          <Link href='/signup' className="w-[88px]">회원가입</Link>
+        </Button>
+        <Button type="submit" className="w-[88px]">로그인</Button>
       </div>
     </form>
   )

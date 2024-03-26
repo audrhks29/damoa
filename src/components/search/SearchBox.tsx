@@ -7,6 +7,9 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Input } from '../ui/input';
+import { Button } from "../ui/button";
+
 export default function SearchBox(
   props: { styleProp: React.CSSProperties | undefined }
 ) {
@@ -59,30 +62,32 @@ export default function SearchBox(
         />}
       </Link>
 
-      {typeParams && queryParams && <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        onKeyDown={handleEnterAtInput}
-        placeholder="검색어를 입력하세요"
-        className='w-full h-[50px] pl-6 min-[1350px]:pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-linkPrimary focus:outline-none'
-      />}
+      {typeParams && queryParams
+        && <Input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          onKeyDown={handleEnterAtInput}
+          placeholder="검색어를 입력하세요"
+          className="h-[50px]"
+        />}
 
       {/* 메인화면 input */}
-      {!typeParams && !queryParams && <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        onKeyDown={handleEnterAtInput}
-        placeholder="검색어를 입력하세요"
-        className='w-full h-[50px] pl-6 border border-orange-600 rounded-3xl pr-[70px] focus:border-linkPrimary focus:outline-none'
-      />}
+      {!typeParams && !queryParams
+        && <Input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          onKeyDown={handleEnterAtInput}
+          placeholder="검색어를 입력하세요"
+          className="h-[50px]"
+        />}
 
-      <button
+      <Button
         onClick={() => handleSearch(query)}
         className='w-[70px] h-[50px] absolute top-0 right-0 flex items-center justify-center'>
-        <i className='text-[30px] text-orange-600'><AiOutlineSearch /></i>
-      </button>
+        <i className='text-[30px] text-white'><AiOutlineSearch /></i>
+      </Button>
     </div>
   );
 }

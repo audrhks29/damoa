@@ -1,16 +1,19 @@
 import LoginForm from "@/components/login/LoginForm";
-import Link from "next/link";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function LoginPage() {
 
   return (
     <main className="inner text-center">
-      <div className="w-[500px] m-auto mt-14 p-24 rounded-2xl shadow-xl">
-        <Link href='/'>
-          <h2 className="text-[50px] text-orange-600 mb-7">DAMOA</h2>
-        </Link>
-        <LoginForm />
-      </div>
+      <Card className="w-[500px] m-auto mt-14 p-24">
+        <CardHeader>
+          <CardTitle>DAMOA</CardTitle>
+          <CardDescription>DAMOA 계정 로그인</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <LoginForm />
+        </CardContent>
+      </Card>
     </main>
   )
 }

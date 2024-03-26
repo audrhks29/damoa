@@ -1,43 +1,45 @@
 "use client"
 import Link from "next/link";
-import React, { MouseEventHandler } from "react";
-import { CgMenuGridR } from "react-icons/cg";
 
-export default function MenuBar(props: {
-  menuPopup: boolean;
-  handleMenuPopup: MouseEventHandler<HTMLDivElement>
-  handleAllPopupFalse: MouseEventHandler<HTMLAnchorElement>
-}) {
+import { CgMenuGridR } from "react-icons/cg";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu";
+
+export default function MenuBar() {
 
   return (
     <div className="relative">
-      <div
-        className="text-[30px] cursor-pointer text-orange-600 mr-3"
-        onClick={props.handleMenuPopup}
-      >
-        <i><CgMenuGridR /></i>
+      <div className="text-[30px] cursor-pointer text-orange-600 mr-3">
       </div>
 
-      {props.menuPopup
-        && <div className="border absolute z-10 right-0 w-72 p-5 text-center rounded-3xl shadow-lg bg-white">
-          <h3 className="mb-3"></h3>
-          <ul className="text-left">
-            <li className="h-10 leading-10 cursor-pointer hover:text-orange-600">
-              <Link
-                href='/calendar'
-                className="block"
-                onClick={props.handleAllPopupFalse}
-              >캘린더</Link>
-              {/* 캘린더 */}
-            </li>
-            <li className="h-10 leading-10 cursor-pointer hover:text-orange-600">
-              메모
-            </li>
-            <li className=" h-10 leading-10 cursor-pointer hover:text-orange-600">
-              주식
-            </li>
-          </ul>
-        </div>}
+      <NavigationMenu className="mr-3 border border-primary rounded-md">
+        <NavigationMenuList >
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>
+              <i><CgMenuGridR /></i>
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <Link href="/calendar" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} w-[100px]`}>
+                  캘린더
+                </NavigationMenuLink>
+              </Link>
+              <Link href="" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} w-[100px]`}>
+                  메모
+                </NavigationMenuLink>
+              </Link>
+              <Link href="" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} w-[100px]`}>
+                  주식
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </div>
   )
 }

@@ -14,7 +14,7 @@ export default function MoreResult({ type }: { type: string }) {
     <div className="text-right text-[14px]">
       <span
         onClick={handleClick}
-        className="cursor-pointer hover:text-orange-600"
+        className="cursor-pointer hover:font-bold"
       >
         검색결과 더보기</span>
     </div>

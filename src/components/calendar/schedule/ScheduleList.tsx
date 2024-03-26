@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useState } from "react"
 
 interface PropsType {
@@ -41,10 +43,10 @@ export default function ScheduleList(props: PropsType) {
           />}
 
         {isEdit
-          ? <input type="text"
+          ? <Input type="text"
             value={todo}
             onChange={handleTodoChange}
-            className="w-[220px] border border-orange-600 focus:outline-none"
+            className="w-[220px]"
           />
           : <p className="w-[220px]">{props.item.todo}</p>}
 
@@ -55,19 +57,19 @@ export default function ScheduleList(props: PropsType) {
 
       <div className="m-auto">
         {isEdit
-          ? <button
+          ? <Button
             onClick={handleEditComplete}
-            className="text-[14px] w-[80px] m-auto border border-orange-600 hover:bg-orange-600 hover:text-white"
-          >완료</button>
-          : <button
-            className="text-[14px] w-[45px] mr-3 border border-orange-600 hover:bg-orange-600 hover:text-white"
-            onClick={handleIsEdit}>수정</button>}
+            className="text-[14px] w-[80px] m-auto"
+          >완료</Button>
+          : <Button
+            className="text-[14px] w-[45px] mr-3"
+            onClick={handleIsEdit}>수정</Button>}
 
         {!isEdit
-          && <button
+          && <Button
             onClick={() => props.removeData(props.item.id)}
-            className="text-[14px] w-[45px] border border-orange-600 hover:bg-orange-600 hover:text-white"
-          >삭제</button>}
+            className="text-[14px] w-[45px]"
+          >삭제</Button>}
       </div>
     </li>
   )

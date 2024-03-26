@@ -8,30 +8,16 @@ import WeatherBar from "./WeatherBar";
 
 export default function NavigationBar() {
   const [weatherPopup, setWeatherPopup] = useState(false);
-  const [menuPopup, setMenuPopup] = useState(false);
   const [userPopup, setUserPopup] = useState(false);
 
   const handleWeatherPopup = () => {
     setWeatherPopup(!weatherPopup)
-    setMenuPopup(false)
-    setUserPopup(false)
-  }
-
-  const handleMenuPopup = () => {
-    setWeatherPopup(false)
-    setMenuPopup(!menuPopup)
     setUserPopup(false)
   }
 
   const handleUserPopup = () => {
     setWeatherPopup(false)
-    setMenuPopup(false)
     setUserPopup(!userPopup)
-  }
-  const handleAllPopupFalse = () => {
-    setWeatherPopup(false)
-    setMenuPopup(false)
-    setUserPopup(false)
   }
 
   return (
@@ -40,11 +26,9 @@ export default function NavigationBar() {
         weatherPopup={weatherPopup}
         handleWeatherPopup={handleWeatherPopup}
       />
-      <MenuBar
-        menuPopup={menuPopup}
-        handleMenuPopup={handleMenuPopup}
-        handleAllPopupFalse={handleAllPopupFalse}
-      />
+
+      <MenuBar />
+
       <Login
         userPopup={userPopup}
         handleUserPopup={handleUserPopup}

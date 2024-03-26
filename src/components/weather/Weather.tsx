@@ -41,12 +41,12 @@ export default function Weather() {
         fontSize={"50px"}
       />}
 
-      <div className="flex border-b border-orange-600">
+      <div className="flex border-b border-primary">
         <p
           className='text-left text-[16px] leading-9 h-9 rounded-t-xl py-1 px-3 cursor-pointer text-[white]'
           onClick={() => setCurrentMenu("weather")}
           style={{
-            backgroundColor: currentMenu === "weather" ? "#EA580C" : "",
+            backgroundColor: currentMenu === "weather" ? "#0F172A" : "",
             fontWeight: currentMenu === "weather" ? "bold" : "",
             color: currentMenu === "weather" ? "white" : "#ccc"
           }}
@@ -56,7 +56,7 @@ export default function Weather() {
           className='text-left text-[16px] leading-9 h-9 rounded-t-xl py-1 px-3 cursor-pointer'
           onClick={() => setCurrentMenu("rainFall")}
           style={{
-            backgroundColor: currentMenu === "rainFall" ? "#EA580C" : "",
+            backgroundColor: currentMenu === "rainFall" ? "#0F172A" : "",
             fontWeight: currentMenu === "rainFall" ? "bold" : "",
             color: currentMenu === "rainFall" ? "white" : "#ccc"
           }}

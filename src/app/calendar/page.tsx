@@ -7,7 +7,7 @@ const Calendar = dynamic(() => import('@/components/calendar/Calendar'), {
 export default function CalendarPage() {
   return (
     <div className='pb-5'>
-      <h2 className='text-center text-[50px] mb-3 text-orange-600'>DAMOA Calendar</h2>
+      <h2 className='text-center text-[50px] mb-3 text-primary'>DAMOA Calendar</h2>
       <Calendar />
     </div>
   )

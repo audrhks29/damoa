@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google"
+import dynamic from "next/dynamic";
+
+import { cn } from "@/lib/utils";
+
+import Providers from "@/provider/Providers";
 
 import "./globals.css";
 import Loading from "./search/loading";
-import Providers from "@/provider/Providers";
-
-import dynamic from "next/dynamic";
 
 const Header = dynamic(() => import('./Header'), {
   ssr: false
 })
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: "DaMoa",
@@ -30,7 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Suspense fallback={<Loading />}>
-        <body className={inter.className}>
+        <body className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}>
           <Providers>
             <Header />
             {children}

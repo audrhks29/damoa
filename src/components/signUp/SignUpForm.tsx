@@ -4,7 +4,12 @@ import { authService } from "@/firebase/firebaseInstance";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
+
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SignUpForm() {
   const router = useRouter()
@@ -32,41 +37,42 @@ export default function SignUpForm() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="flex flex-col items-center">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="sign_input"
-          placeholder="이름"
-          required
-        />
+      <Label htmlFor="name">Name</Label>
+      <Input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="이름"
+        required
+        className="mb-3"
+      />
 
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="sign_input"
-          placeholder="이메일"
-          required
-        />
+      <Label htmlFor="email">이메일</Label>
+      <Input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="이메일"
+        required
+        className="mb-3"
+      />
 
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="sign_input"
-          placeholder="패스워드"
-          required
-          autoComplete="off"
-        />
+      <Label htmlFor="email">패스워드</Label>
+      <Input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="패스워드"
+        required
+        autoComplete="off"
+        className="mb-3"
+      />
+
+      <div className="flex mt-5 justify-center">
+        <Button type="submit">
+          <Link href='/signup' className="w-[88px]">회원가입</Link>
+        </Button>
       </div>
-
-      <button
-        type="submit"
-        className="w-[300px] h-10 mt-3 rounded-2xl bg-orange-600 text-white hover:bg-orange-400"
-      >
-        회원가입</button>
     </form>
   )
 }

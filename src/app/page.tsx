@@ -8,7 +8,7 @@ const SearchBox = dynamic(() => import('@/components/search/SearchBox'), {
 export default function Home() {
   return (
     <main className="inner">
-      <div className="text-center text-6xl mt-40 text-orange-600">DAMOA</div>
+      <div className="text-center text-primary text-6xl mt-40">DAMOA</div>
       <SearchBox
         styleProp={{ margin: "auto", marginTop: "20px" }} />
     </main>

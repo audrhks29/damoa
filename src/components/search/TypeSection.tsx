@@ -1,5 +1,6 @@
 import menu from '@/assets/SearchTypeList.json'
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Menubar, MenubarContent, MenubarMenu, MenubarTrigger } from '../ui/menubar';
 
 export default function TypeSection() {
   const params = useSearchParams()
@@ -14,20 +15,23 @@ export default function TypeSection() {
   }
 
   return (
-    <ul className='sm:w-full lg:w-[800px] flex justify-between py-6'>
-      {menu.map(item => (
-        <li
-          className='border hover:border-orange-600 w-24 text-center rounded-2xl cursor-pointer h-8 leading-8 text-[14px]'
-          key={item.id}
-          onClick={() => handleType(item.type)}
-          style={{
-            borderColor: typeParams == item.type ? '#EA580C' : '',
-            fontWeight: typeParams == item.type ? 'bold' : '',
-          }}
-        >
-          {item.name}
-        </li>
-      ))}
-    </ul>
+    <Menubar className="h-20 border-none text-center text-[14px] sm:w-full lg:w-[800px] flex justify-between">
+      <MenubarMenu>
+        {menu.map(item => (
+          <MenubarTrigger
+            className='w-24 justify-center p-3 cursor-pointer h-8 leading-8'
+            key={item.id}
+            onClick={() => handleType(item.type)}
+            style={{
+              backgroundColor: typeParams === item.type ? '#0f172a' : 'white',
+              color: typeParams === item.type ? 'white' : 'black',
+              border: typeParams === item.type ? "none" : '1px solid #0f172a'
+            }}
+          >
+            {item.name}
+          </MenubarTrigger>
+        ))}
+      </MenubarMenu>
+    </Menubar>
   )
 }

@@ -4,6 +4,7 @@ import { child, get, ref, remove, set, update } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 import ScheduleList from "./ScheduleList";
 import AddSchedule from "./AddSchedule";
+import { Button } from "@/components/ui/button";
 
 export default function Schedule({ nowDate }: { nowDate: string }) {
   const { userInfo } = useUserStore()
@@ -27,7 +28,6 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
       get(child(dbRef, `/${userInfo.uid}/schedule/${nowDate}`))
         .then(snapshot => {
           const data = snapshot.val();
-          console.log(data);
           if (data) {
             const scheduleArray: ScheduleListType[] = Object.values(data).map((item: any) => ({
               id: item.id,
@@ -115,7 +115,7 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
 
   return (
     <div className="sm:ml-0 sm:w-[600px] sm:border border-orange-600 xl:border-0 lg:ml-6 xl:w-[500px] xl:shadow-xl rounded-2xl ml-6 p-5 text-center relative">
-      <p className="text-[14px] border-b-2 border-b-orange-600 p-2 font-bold">
+      <p className="text-[14px] border-b-2 border-b-primary p-2 font-bold">
         {nowDate}
       </p>
 
@@ -150,14 +150,8 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
 
       <div className="text-right text-[14px]">
         {isAddTodo
-          ? <button
-            className="w-[80px] mr-3 h-7 leading-7 bg-white border border-orange-600 hover:bg-orange-600 hover:text-white"
-            onClick={() => setIsAddTodo(false)}
-          >취소</button>
-          : <button
-            className="w-[80px] mr-3 h-7 leading-7 bg-white border border-orange-600 hover:bg-orange-600 hover:text-white"
-            onClick={() => setIsAddTodo(true)}
-          >추가</button>}
+          ? <Button onClick={() => setIsAddTodo(false)}>취소</Button>
+          : <Button onClick={() => setIsAddTodo(true)}>추가</Button>}
       </div>
     </div>
   )
