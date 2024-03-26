@@ -8,7 +8,7 @@ import useUserStore from "@/store/user-store";
 
 export default function Login(props: {
   userPopup: boolean;
-  handleUserPopup: MouseEventHandler<HTMLDivElement>
+  handleUserPopup: MouseEventHandler<HTMLButtonElement>
 }) {
   const { userInfo, getUserInfo } = useUserStore()
 

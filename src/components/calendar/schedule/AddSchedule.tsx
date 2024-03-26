@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input";
 import EditTime from "../EditTime";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 
 const hourArray = Array.from({ length: 24 }, (_, index) => (
   index <= 9 ? `0${index}` : (index).toString()
@@ -35,7 +34,7 @@ interface PropsType {
 export default function AddSchedule(props: PropsType) {
   return (
     <li className="py-3 flex items-center">
-      <Checkbox
+      <input type="checkbox"
         checked={props.isChecked}
         onChange={props.handleCheckedChange}
         className="mr-3"
