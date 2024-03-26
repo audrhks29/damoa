@@ -1,6 +1,6 @@
 import menu from '@/assets/SearchTypeList.json'
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Menubar, MenubarContent, MenubarMenu, MenubarTrigger } from '../ui/menubar';
+import { Menubar, MenubarMenu, MenubarTrigger } from '../ui/menubar';
 
 export default function TypeSection() {
   const params = useSearchParams()
