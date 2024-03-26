@@ -17,8 +17,17 @@
 
 
 ## 2. 주요기능
-### 1. 검색 및 페이징 기능
-![녹화_2024_03_10_01_33_22_359](https://github.com/audrhks29/use-search-API/assets/130128690/a2349612-5a39-4197-93f5-f0c10015d766)
+### 1. 로그인 기능
+![login](https://github.com/audrhks29/damoa/assets/130128690/3224738f-ceae-453c-bd0d-1532d76077bb)
+
+### 2. 검색 기능
+![search](https://github.com/audrhks29/damoa/assets/130128690/0c295391-779d-47f5-99c2-04253073cff4)
+
+### 3. 날씨 기능
+![weather](https://github.com/audrhks29/damoa/assets/130128690/c79fd40a-932c-4cb9-9f8f-e81f974c8eec)
+
+### 4. 캘린더 및 일정 등록 기능
+![calendar](https://github.com/audrhks29/damoa/assets/130128690/7445c51e-4ee2-4f29-9381-d8d50ccf88fb)
 
 ## 3. 개선해야할 사항
 ### 1. 문제해결
