@@ -4,13 +4,13 @@
   height:380px;
   padding:20px;
   border: none;
-  font-family: Arial;
+  font-family: '__Inter_aaf875', '__Inter_Fallback_aaf875';
   max-width: 600px;
 }
 
 @media (min-width: 640px){
   .react-calendar{
-    border: 1px solid #f97316;
+    border: 1px solid #0F172A;
     margin-bottom:10px;
   }
 }
@@ -21,11 +21,13 @@
     --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    margin-bottom:0;
   }
 }
 
 .react-calendar__navigation {
-  border-bottom: 2px solid #f97316;
+  border-bottom: 2px solid #0F172A;
+  font-weight:bold;
 }
 
 .react-calendar__month-view__weekdays {
@@ -43,18 +45,18 @@
 }
 
 .react-calendar__tile--now {
-  background: #EA880C;
+  background: #272E3F;
   color:#fff;
 }
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #EA880C;
+  background: #272E3F;
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus,
 .react-calendar__tile--active {
-  background: #f97316;
+  background: #0F172A;
   color:#fff;
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 interface PropsType {
   text: string;
@@ -16,7 +17,7 @@ export default function EditTime(props: PropsType) {
   const [minute, setMinute] = useState(props.time.minute);
 
   return (
-    <div className="absolute flex flex-col bg-white h-52 border p-3 rounded-xl">
+    <div className="absolute flex flex-col bg-white h-56 border p-3 rounded-xl">
       <p className="text-center pb-2">{props.text}</p>
       <div className="flex">
         <ul className='overflow-y-scroll w-20 h-28'>
@@ -28,8 +29,8 @@ export default function EditTime(props: PropsType) {
                 onClick={() => setHour(item)}
                 className="px-2 cursor-pointer hover:bg-orange-400 hover:text-white"
                 style={{
-                  backgroundColor: selectedItem ? "#EA580C" : "",
-                  color: selectedItem ? "white" : "black"
+                  backgroundColor: selectedItem ? "#0F172A" : "",
+                  color: selectedItem ? "white" : "#0F172A"
                 }}
               >{item}</li>
             )
@@ -45,8 +46,8 @@ export default function EditTime(props: PropsType) {
                 onClick={() => setMinute(item)}
                 className="px-2 cursor-pointer hover:bg-orange-400 hover:text-white"
                 style={{
-                  backgroundColor: selectedItem ? "#EA580C" : "",
-                  color: selectedItem ? "white" : "black"
+                  backgroundColor: selectedItem ? "#0F172A" : "",
+                  color: selectedItem ? "white" : "#0F172A"
                 }}
               >{item}</li>
             )
@@ -55,11 +56,8 @@ export default function EditTime(props: PropsType) {
       </div>
 
       <div className="text-center mt-3">
-        <button
-          className="w-20 rounded-lg bg-orange-600 text-white hover:bg-orange-400"
-          onClick={() => props.handleClickTime(hour, minute)}
-        >
-          완료</button>
+        <Button onClick={() => props.handleClickTime(hour, minute)}>
+          완료</Button>
       </div>
     </div>
   )

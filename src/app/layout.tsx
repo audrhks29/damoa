@@ -11,7 +11,7 @@ import "./globals.css";
 import Loading from "./search/loading";
 
 const Header = dynamic(() => import('./Header'), {
-  ssr: false
+  // ssr: false
 })
 
 const fontSans = FontSans({

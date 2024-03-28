@@ -1,10 +1,17 @@
 "use client"
-import Link from "next/link";
 
 import { CgMenuGridR } from "react-icons/cg";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu";
+import useUserStore from "@/store/user-store";
+import { useRouter } from "next/navigation";
 
 export default function MenuBar() {
+  const { userInfo } = useUserStore()
+  const router = useRouter();
+
+  const handleClickMenu = (link: string) => {
+    userInfo ? router.push(link) : alert("로그인 이후 사용가능합니다.")
+  }
 
   return (
     <div className="relative">
@@ -18,24 +25,14 @@ export default function MenuBar() {
               <i><CgMenuGridR /></i>
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <Link href="/calendar" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} w-[100px]`}>
-                  캘린더
-                </NavigationMenuLink>
-              </Link>
-              <Link href="" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} w-[100px]`}>
-                  메모
-                </NavigationMenuLink>
-              </Link>
-              <Link href="" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} w-[100px]`}>
-                  주식
-                </NavigationMenuLink>
-              </Link>
+              <ul className="w-[100px]">
+                <li
+                  className={`${navigationMenuTriggerStyle()} cursor-pointer`}
+                  onClick={() => handleClickMenu('/calendar')}
+                >캘린더</li>
+                <li className={`${navigationMenuTriggerStyle()} cursor-pointer`}>메모</li>
+                <li className={`${navigationMenuTriggerStyle()} cursor-pointer`}>금융</li>
+              </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>

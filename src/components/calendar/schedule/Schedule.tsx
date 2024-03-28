@@ -5,11 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 import ScheduleList from "./ScheduleList";
 import AddSchedule from "./AddSchedule";
 import { Button } from "@/components/ui/button";
+import useScheduleStore from "@/store/schedule-store";
 
 export default function Schedule({ nowDate }: { nowDate: string }) {
-  const { userInfo } = useUserStore()
+  const { userInfo } = useUserStore();
+  const { scheduleData, setScheduleData } = useScheduleStore();
 
-  const [scheduleData, setScheduleData] = useState<ScheduleListType[]>([]);
   const [todo, setTodo] = useState("");
   const [isChecked, setIsChecked] = useState(false)
 
@@ -19,7 +20,7 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
   const [isEditEndTime, setIsEditEndTime] = useState(false);
 
   const handleTodoChange = (e: any) => setTodo(e.target.value);
-  const handleCheckedChange = (e: any) => setIsChecked(!isChecked);
+  const handleCheckedChange = () => setIsChecked(!isChecked);
 
   const readOne = useCallback(() => {
     const dbRef = ref(db);
@@ -45,7 +46,7 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
           console.error(error);
         });
     }
-  }, [userInfo, nowDate]);
+  }, [userInfo, nowDate, setScheduleData]);
 
   useEffect(() => {
     // db read
@@ -84,9 +85,7 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
   // db delete
   const removeData = (id: number) => {
     remove(ref(db, `/${userInfo.uid}/schedule/${nowDate}/${id}`))
-    setScheduleData(prevScheduleData =>
-      prevScheduleData.filter(item => item && item.id !== id)
-    );
+    readOne()
   }
 
   // time
@@ -114,10 +113,10 @@ export default function Schedule({ nowDate }: { nowDate: string }) {
   }
 
   return (
-    <div className="sm:ml-0 sm:w-[600px] sm:border border-orange-600 xl:border-0 lg:ml-6 xl:w-[500px] xl:shadow-xl rounded-2xl ml-6 p-5 text-center relative">
-      <p className="text-[14px] border-b-2 border-b-primary p-2 font-bold">
+    <div className="sm:ml-0 w-[600px] min-h-[380px] sm:border border-primary xl:border-0 xl:shadow-xl rounded-2xl p-5 text-center relative">
+      <h2 className="border-b-2 border-b-primary p-2 font-bold">
         {nowDate}
-      </p>
+      </h2>
 
       <ul className="text-left min-h-[262px]">
         {isAddTodo
