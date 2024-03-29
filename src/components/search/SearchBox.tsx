@@ -51,7 +51,7 @@ export default function SearchBox(
       className='relative sm:w-4/5 md:w-3/5 xl:w-1/2 flex items-center'
       style={props.styleProp}
     >
-      <Link href={'/'}>
+      <Link href='/'>
         {typeParams && queryParams && <Image
           width='50'
           height='50'

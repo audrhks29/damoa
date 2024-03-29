@@ -5,12 +5,13 @@ import useMemoStore from '@/store/memo-store';
 import useUserStore from '@/store/user-store';
 import { ref, set } from 'firebase/database';
 
-const ReactQuill = dynamic(import('react-quill'), { ssr: false })
 import 'react-quill/dist/quill.snow.css';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
 import moment from 'moment';
+
+// import ReactQuill from 'react-quill';
 import dynamic from 'next/dynamic';
 
 const formats = [
@@ -33,6 +34,9 @@ const formats = [
 ];
 
 export default function TextEditor() {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }), [],
+  );
   const { userInfo } = useUserStore()
   const { memoData } = useMemoStore();
 

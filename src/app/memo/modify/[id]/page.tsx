@@ -8,7 +8,7 @@ import { child, get, ref, update } from "firebase/database";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
-const ReactQuill = dynamic(import('react-quill'), { ssr: false })
+
 import 'react-quill/dist/quill.snow.css';
 
 const formats = [
@@ -31,6 +31,10 @@ const formats = [
 ];
 
 export default function ModifyMemo(props: { params: { id: number } }) {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }), [],
+  );
+
   const [values, setValues] = useState("");
   const [title, setTitle] = useState("");
   const { userInfo } = useUserStore()
