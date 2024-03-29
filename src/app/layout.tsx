@@ -18,7 +18,10 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: "DaMoa",
+  title: {
+    template: "DAMOA | %s",
+    default: "DAMOA"
+  },
   description: "다양한 정보와 컨텐츠를 검색해보세요.",
   icons: {
     icon: "/favicon.ico",

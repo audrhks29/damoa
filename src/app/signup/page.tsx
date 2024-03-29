@@ -1,6 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SignUpForm from "@/components/signUp/SignUpForm"
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Sign up",
+  description: "DAMOA 계정을 만들어보세요"
+};
 
 export default function SignUpPage() {
   return (

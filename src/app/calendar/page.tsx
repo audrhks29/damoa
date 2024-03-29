@@ -1,4 +1,10 @@
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic'
+
+export const metadata: Metadata = {
+  title: "Calendar",
+  description: "일정을 만들어보세요"
+};
 
 const Todo = dynamic(() => import('@/components/calendar/Todo'), {
   ssr: false

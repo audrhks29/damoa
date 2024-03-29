@@ -1,4 +1,10 @@
 import MemoList from "@/components/memo/MemoList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Memo",
+  description: "메모를 만들어보세요"
+};
 
 export default function MemoPage() {
   return (

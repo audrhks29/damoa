@@ -1,5 +1,11 @@
 import LoginForm from "@/components/login/LoginForm";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login",
+  description: "DAMOA 계정으로 로그인 하세요"
+};
 
 export default function LoginPage() {
 
