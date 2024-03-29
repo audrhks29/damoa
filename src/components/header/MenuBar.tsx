@@ -1,7 +1,7 @@
 "use client"
 
 import { CgMenuGridR } from "react-icons/cg";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu";
 import useUserStore from "@/store/user-store";
 import { useRouter } from "next/navigation";
 
@@ -30,7 +30,10 @@ export default function MenuBar() {
                   className={`${navigationMenuTriggerStyle()} cursor-pointer`}
                   onClick={() => handleClickMenu('/calendar')}
                 >캘린더</li>
-                <li className={`${navigationMenuTriggerStyle()} cursor-pointer`}>메모</li>
+                <li
+                  className={`${navigationMenuTriggerStyle()} cursor-pointer`}
+                  onClick={() => handleClickMenu('/memo')}
+                >메모</li>
                 <li className={`${navigationMenuTriggerStyle()} cursor-pointer`}>금융</li>
               </ul>
             </NavigationMenuContent>

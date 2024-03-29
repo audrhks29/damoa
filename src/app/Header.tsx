@@ -22,6 +22,7 @@ export default function Header() {
       {typeParams && queryParams && <SearchBox
         styleProp={{ marginLeft: '5%' }}
       />}
+
       <NavigationBar />
     </header>
   )

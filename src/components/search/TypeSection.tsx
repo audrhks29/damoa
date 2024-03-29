@@ -1,6 +1,7 @@
 import menu from '@/assets/SearchTypeList.json'
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Menubar, MenubarMenu, MenubarTrigger } from '../ui/menubar';
+import { MouseEvent } from 'react';
 
 export default function TypeSection() {
   const params = useSearchParams()
@@ -10,7 +11,8 @@ export default function TypeSection() {
   const queryParams = params.get('query');
 
   // click type button
-  const handleType = (type: string) => {
+  const handleType = (e: MouseEvent<HTMLButtonElement>, type: string) => {
+    e.preventDefault()
     router.push(`/search?type=${type}&query=${queryParams}`);
   }
 
@@ -21,7 +23,7 @@ export default function TypeSection() {
           <MenubarTrigger
             className='w-24 justify-center p-3 cursor-pointer h-8 leading-8'
             key={item.id}
-            onClick={() => handleType(item.type)}
+            onClick={(e) => handleType(e, item.type)}
             style={{
               backgroundColor: typeParams === item.type ? '#0f172a' : 'white',
               color: typeParams === item.type ? 'white' : 'black',

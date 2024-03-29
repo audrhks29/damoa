@@ -1,9 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-const SearchBox = dynamic(() => import('@/components/search/SearchBox'), {
-  ssr: false
-})
+const SearchBox = dynamic(() => import('@/components/search/SearchBox'))
 
 export default function Home() {
   return (

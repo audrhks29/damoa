@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { authService } from "@/firebase/firebaseInstance";
 import useUserStore from "@/store/user-store"
+import { useRouter } from "next/navigation";
 import React, { MouseEventHandler } from "react";
 
 export default function LoggedIn(props: {
@@ -11,11 +12,14 @@ export default function LoggedIn(props: {
 
   const { userInfo, deleteUserInfo } = useUserStore();
 
+  const router = useRouter();
+
   const logoutFB = () => {
     const logoutConfirm = confirm("로그아웃 하시겠습니까?")
     if (logoutConfirm) {
       authService.signOut()
       deleteUserInfo()
+      router.push('/')
     }
   };
 
