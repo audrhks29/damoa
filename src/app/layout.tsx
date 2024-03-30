@@ -10,7 +10,7 @@ import Providers from "@/provider/Providers";
 import "./globals.css";
 import Loading from "./search/loading";
 
-const Header = dynamic(() => import('./Header'))
+const Header = dynamic(() => import('./Header'), { ssr: false })
 
 const fontSans = FontSans({
   subsets: ["latin"],
