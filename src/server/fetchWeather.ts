@@ -1,21 +1,30 @@
 import axios from "axios";
 
 export default async function fetchWeather() {
-  const location = await getMyLocation();
-  const xyGrid: any = await convertMyLocation(location.latitude, location.longitude);
-  return await getWeatherData(xyGrid.x, xyGrid.y);
+  try {
+    const location = await getMyLocation();
+    const xyGrid = await convertMyLocation(location.latitude, location.longitude);
+    return await getWeatherData(xyGrid.x, xyGrid.y);
+  } catch (error) {
+    const xyGrid = await convertMyLocation(60, 126);
+    return await getWeatherData(xyGrid.x, xyGrid.y);
+  }
 }
 
-function getMyLocation(): Promise<Coordinates> {
+async function getMyLocation(): Promise<Coordinates> {
   return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        resolve(position.coords);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    if (!navigator.geolocation) {
+      reject(new Error('Geolocation is not supported.'));
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position.coords);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    }
   });
 }
 
