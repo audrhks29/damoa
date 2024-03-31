@@ -34,7 +34,6 @@ export default function MenuBar() {
                   className={`${navigationMenuTriggerStyle()} cursor-pointer`}
                   onClick={() => handleClickMenu('/memo')}
                 >메모</li>
-                <li className={`${navigationMenuTriggerStyle()} cursor-pointer`}>금융</li>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

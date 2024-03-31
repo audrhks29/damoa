@@ -50,6 +50,9 @@ export default function LoginForm() {
         className="mb-3"
       />
 
+      <Link
+        href='/account'
+        className="text-[12px] hover:font-bold">비밀번호를 잃어버렸습니다.</Link>
       <div className="flex mt-5 justify-center">
         <Button asChild className="mr-5">
           <Link href='/signup' className="w-[88px]">회원가입</Link>

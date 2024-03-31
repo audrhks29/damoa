@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { authService } from "@/firebase/firebaseInstance";
 import useUserStore from "@/store/user-store"
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { MouseEventHandler } from "react";
 
@@ -38,7 +39,9 @@ export default function LoggedIn(props: {
           <CardContent>
             <ul>
               <li className="flex h-10 justify-between leading-10">
-                <div className="w-[120px] rounded-l-2xl border cursor-pointer hover:bg-primary hover:text-white">계정설정</div>
+                <div className="w-[120px] rounded-l-2xl border cursor-pointer hover:bg-primary hover:text-white">
+                  <Link href='account' className="block">계정설정</Link>
+                </div>
                 <div
                   className="w-[120px] rounded-r-2xl border cursor-pointer hover:bg-primary hover:text-white"
                   onClick={logoutFB}>로그아웃</div>
