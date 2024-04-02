@@ -32,8 +32,6 @@ export default function SearchImageAll_Image(props: {
             quality={50}
             className='object-cover hover:scale-105 bg-black transition-all sm:w-56 md:w-full'
             onError={() => setImageUrl(false)}
-            placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M/wHwAEBgIApBUlcwAAAABJRU5ErkJggg=="
           />
         </div>
       </Link>

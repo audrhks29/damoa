@@ -24,6 +24,8 @@ export default function CafeContents({ data }: { data: SearchCafeType[] }) {
                   height={120}
                   alt={result.title}
                   quality={100}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />}
               <div className="w-[600px] ml-4">
                 <p

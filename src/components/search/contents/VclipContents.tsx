@@ -20,7 +20,10 @@ export default function VclipContents({ data }: { data: SearchVclipType[] }) {
                   width={138}
                   height={78}
                   alt={result.title}
-                  quality={100} />}
+                  quality={100}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+                />}
 
               <div className="search_result_div ml-4 flex flex-col justify-between">
                 <p

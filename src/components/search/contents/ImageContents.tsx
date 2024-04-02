@@ -16,7 +16,10 @@ export default function ImageContents({ data }: { data: SearchImageType[] }) {
                   width={180}
                   height={180}
                   alt=""
-                  quality={100} />}
+                  quality={100}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+                />}
               </Link>
             </div>
           </li>

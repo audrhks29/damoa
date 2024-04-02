@@ -23,7 +23,10 @@ export default function BlogContents({ data }: { data: SearchBlogType[] }) {
                   width={120}
                   height={120}
                   alt=""
-                  quality={100} />}
+                  quality={100}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==" />
+              }
               <div className="w-[600px] ml-4 flex flex-col justify-between">
                 <p
                   className='mb-2 hover:underline text-linkPrimary'

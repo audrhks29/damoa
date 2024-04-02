@@ -21,6 +21,8 @@ export default function BookContents({ data }: { data: SearchBookType[] }) {
                   quality={100}
                   className="w-auto h-auto"
                   priority={true}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />}
 
               <div className='text-sm flex flex-col justify-between ml-4'>
