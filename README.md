@@ -4,7 +4,7 @@
 ### 1. 기본정보
 |            | 설명                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 작업기간   | 2024.03.08 ~                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 작업기간   | 2024.03.08 ~ 2024.04.02                                                                                                                                                                                                                                                                                                                                                                                                             |
 | 작업인원   | 1                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 라이브러리 | <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/zustand-999999?style=flat-square&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Tanstack_Query-FF4154?style=flat-square&logo=ReactQuery&logoColor=black"> <img src="https://img.shields.io/badge/shadcn/ui-000000?style=flat-square&logo=shadcn/ui&logoColor=white"> |
 | 프레임워크 | <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=flat-square&logo=tailwindcss&logoColor=black">                                                                                                                                                                                                             |
@@ -21,15 +21,24 @@
 ### 1. 로그인 기능
 ![login](https://github.com/audrhks29/damoa/assets/130128690/3224738f-ceae-453c-bd0d-1532d76077bb)
 
+<img src="https://img.shields.io/badge/firebase Auth-FFCA28?style=flat-square&logo=firebase&logoColor=black"> 를 활용하여 로그인, 로그아웃, 비밀번호 재설정, 회원탈퇴 기능 제공
+
+<img src="https://img.shields.io/badge/zustand-999999?style=flat-square&logo=react&logoColor=black">를 활용하여 로그인 데이터 전역관리
+
 ### 2. 검색 기능
 ![search](https://github.com/audrhks29/damoa/assets/130128690/0c295391-779d-47f5-99c2-04253073cff4)
+
+카카오API를 활용하여 검색 데이터 제공
 
 ### 3. 날씨 기능
 ![weather](https://github.com/audrhks29/damoa/assets/130128690/c79fd40a-932c-4cb9-9f8f-e81f974c8eec)
 
+<img src="https://img.shields.io/badge/Tanstack_Query-FF4154?style=flat-square&logo=ReactQuery&logoColor=black">, 기상청 API, `navigator.geolocation`함수를 활용하여 현 위치 기반 날씨 출력
+
 ### 4. 캘린더 및 일정 등록 기능
 ![calendar](https://github.com/audrhks29/damoa/assets/130128690/7445c51e-4ee2-4f29-9381-d8d50ccf88fb)
 
+<img src="https://img.shields.io/badge/React_calendar-F4F125?style=flat-square&logoColor=black">, <img src="https://img.shields.io/badge/firebase Realtime Database-FFCA28?style=flat-square&logo=firebase&logoColor=black"> 를 활용하여 캘린더 및 일정관리 DB등록
 ## 3. 개선해야할 사항
 ### 1. 문제해결
 #### v1.0.0
