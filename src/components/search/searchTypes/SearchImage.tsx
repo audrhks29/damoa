@@ -18,11 +18,11 @@ export default function SearchImage() {
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: ['imageData', typeParams, queryParams],
-    queryFn: ({ pageParam = 0 }) => fetchExceptBook(typeParams, queryParams, 50, pageParam),
+    queryFn: ({ pageParam = 0 }) => fetchExceptBook(typeParams, queryParams, 20, pageParam),
     select: (data) => data.pages.map(item => item.documents),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      const lastDataPage = Math.ceil(lastPage.meta.pageable_count / 50);
+      const lastDataPage = Math.ceil(lastPage.meta.pageable_count / 20);
       if (lastDataPage !== lastPageParam && lastDataPage !== 0)
         return allPages.length + 1;
     }
