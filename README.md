@@ -26,6 +26,8 @@
 
 ## 🛞로고
 
+![logo](https://github.com/audrhks29/damoa/assets/130128690/10c703f9-e9a5-46e1-8945-17398f1e3973)
+
 ## 👀UI
 
 ### 1. 로그인
